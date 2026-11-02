@@ -1,0 +1,54 @@
+// Gabrielle de Leeuw
+// 10/27/26 [created NPC class], 10/28/26 [created Murderer class, added a bit of fio to NPC and Murderer], 
+// 10/29/2026 [removed file io], 10/31/2026 [fixed errors]
+// Header file for NPC and Murderer classes
+
+#ifndef NPCCLASS_H
+#define NPCCLASS_H
+
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+class NPC {
+protected:
+	bool isAlive;
+	bool isInnocent;
+	int talksToForgiveness;
+	string name;
+	string motive[9];
+	string alibi;
+	string dialogue[5];
+public:
+	NPC();
+    virtual	~NPC();
+	NPC(string name);
+	void kill();
+	void accuse();
+	string dialogueLine();
+	bool getAlive();
+	bool getInnocent();
+	int getTalksToForgiveness();
+	string getName();
+	string getAlibi();
+	string getMotive(int n);
+	virtual void newChance(); // to make murderer work
+	virtual void doesKill(NPC* c[10]); // to make murderer work
+};
+
+class Murderer : public NPC {
+protected:
+	bool killTwice;
+	bool lastWrongAccuse;
+	int numberToKill;
+public:
+	Murderer(string n);
+	~Murderer();
+	void newChance();
+	void doesKill(NPC* n[10]);
+	bool getInnocent();
+};
+
+#endif
