@@ -38,6 +38,7 @@ public:
 	virtual void newChance(); // to make murderer work
 	virtual void doesKill(NPC* c[10]); // to make murderer work
 	int checkOtherInAlibi(NPC* c[10]);
+	int getRoom();
 };
 
 class Murderer : public NPC {
