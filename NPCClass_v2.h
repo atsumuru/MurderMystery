@@ -40,6 +40,7 @@ public:
 	virtual void doesKill(NPC* c[10]); // to make murderer work
 	int checkOtherInAlibi(NPC* c[10]);
 	int getRoom();
+	void setAlibi(NPC* c[10]);
 	string getAlibi();
 };
 
