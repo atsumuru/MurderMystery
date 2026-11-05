@@ -22,6 +22,7 @@ protected:
 	string alibi;
 	string dialogue[5];
 	int room;
+	string alibi;
 public:
 	NPC();
     virtual	~NPC();
@@ -39,6 +40,7 @@ public:
 	virtual void doesKill(NPC* c[10]); // to make murderer work
 	int checkOtherInAlibi(NPC* c[10]);
 	int getRoom();
+	string getAlibi();
 };
 
 class Murderer : public NPC {
