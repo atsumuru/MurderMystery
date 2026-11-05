@@ -68,6 +68,14 @@ public:
         
         // cout << "I was in " << room << "with" << otherCharacter;
         // or something like that
+
+
+        // OKAY HERE HOW IT'S GONNA GO
+        // randomly sort all npcs into rooms
+        // save their names and locations
+        // the alibi will be a fill in
+        // max two per location
+        // if only one person, DO NOT INCLUDE MULTI TEXT
         
         int i = rand() % 5;
         cout << alibi[i] << endl;
