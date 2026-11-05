@@ -21,6 +21,7 @@ protected:
 	string motive[9];
 	string alibi;
 	string dialogue[5];
+	int room;
 public:
 	NPC();
     virtual	~NPC();
@@ -36,6 +37,7 @@ public:
 	string getMotive(int n);
 	virtual void newChance(); // to make murderer work
 	virtual void doesKill(NPC* c[10]); // to make murderer work
+	int checkOtherInAlibi(NPC* c[10]);
 };
 
 class Murderer : public NPC {
