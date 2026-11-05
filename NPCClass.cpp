@@ -25,6 +25,7 @@ inline NPC::NPC(string name) : name(name) {
 	isInnocent = true;
 	talksToForgiveness = 0;
 	// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
+	room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
 }
 void inline NPC::kill() { 
     isAlive = false; 
@@ -44,6 +45,15 @@ string inline NPC::getAlibi() { return alibi; }
 string inline NPC::getMotive(int n) { return motive[n]; }
 void inline NPC::newChance() {}
 void inline NPC::doesKill(NPC* c[10]) {}
+int inline NPC::checkOtherInAlibi(NPC* c[10]) {
+	for (int i = 0; i < 10; i ++) {
+		if(c[i]->getRoom == room) {
+			return i;
+		}
+	}
+	return 0;
+}
+int inline NPC::getRoom() { return room; }
 
 inline Murderer::Murderer(string n) {
 		name = n;
