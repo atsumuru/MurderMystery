@@ -8,7 +8,10 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "NPCClass.h"
+#include <cstring>
+#include <string>
+
+#include "NPCClass_v2.h"
 
 using namespace std;
 
@@ -26,13 +29,13 @@ inline NPC::NPC(string name) : name(name) {
 	talksToForgiveness = 0;
 	// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
 	room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
-	alibi = name + " was in train car " + room;
+	alibi = name + " was in train car " + std::to_string(room);
 }
 void inline NPC::setAlibi(NPC* c[10]) {
-	if( this.checkOtherInAlibi() == 0 ) {
+	if( this->checkOtherInAlibi(c) == 0 ) {
 		alibi = alibi + " by themselves.";
 	} else {
-		alibi = alibi + " with " + c[this.checkOtherInAlibi()]->name + ".";
+		alibi = alibi + " with " + c[this->checkOtherInAlibi(c)]->name + ".";
 	}
 }
 string inline NPC::getAlibi() { return alibi; }
@@ -56,7 +59,7 @@ void inline NPC::newChance() {}
 void inline NPC::doesKill(NPC* c[10]) {}
 int inline NPC::checkOtherInAlibi(NPC* c[10]) {
 	for (int i = 0; i < 10; i ++) {
-		if(c[i]->getRoom == room) {
+		if(c[i]->getRoom() == room) {
 			return i;
 		}
 	}
