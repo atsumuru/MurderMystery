@@ -21,6 +21,7 @@ GameManager::GameManager(int charNum) : numOfChars(charNum) {
 			characters[i] = new NPC(names[i]);
 			cout << "NPC created!" << endl;
 		}
+		characters[i]->setAlibi();
 	}
 	cout << "end of for loop" << endl;
 	NPCsLeft = charNum - 1;
