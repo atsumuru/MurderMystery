@@ -13,7 +13,6 @@ using namespace std;
 class Character {
 private:
     
-    
     string ascii; 
     string name;
     
@@ -23,16 +22,7 @@ private:
             "CHARACTER Catchphrase #2",
             "CHARACTER Catchphrase #3"
         };
-        
-    string alibi[5] =
-        {
-            "CHARACTER Single Alibi #1",
-            "CHARACTER Single Alibi #2",
-            "CHARACTER Single Alibi #3",
-            "CHARACTER With Person Alibi #4",
-            "CHARACTER With Person Alibi #5"
-        };
-        
+
     string motive[3] =
         {
             "CHARACTER Positive Motive",
@@ -59,28 +49,6 @@ public:
         cout << catchphrase[i] << endl;
     }
     
-    void displayAlibi()
-    {
-        // randomly pull one of the five alibis
-        // prolly other logic to figure out how to pick multi
-        // if statements (maybe randomly pick room, if someone else is
-        // in it then it will saywith characterName) maybe??
-        
-        // cout << "I was in " << room << "with" << otherCharacter;
-        // or something like that
-
-
-        // OKAY HERE HOW IT'S GONNA GO
-        // randomly sort all npcs into rooms
-        // save their names and locations
-        // the alibi will be a fill in
-        // max two per location
-        // if only one person, DO NOT INCLUDE MULTI TEXT
-        
-        int i = rand() % 5;
-        cout << alibi[i] << endl;
-    }
-    
     void displayMotive()
     {
         // randomly pull one of the three motives
@@ -98,7 +66,6 @@ int main()
     character.displayCharacter();
     character.displayName();
     character.displayCatchphrase();
-    character.displayAlibi();
     character.displayMotive();
 
     return 0;
