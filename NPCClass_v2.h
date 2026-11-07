@@ -36,7 +36,7 @@ public:
 	string getAlibi();
 	string getMotive(int n);
 	virtual void newChance(); // to make murderer work
-	virtual void doesKill(NPC* c[10]); // to make murderer work
+	virtual void doesKill(NPC* c[10], int me); // to make murderer work
 	int checkOtherInAlibi(NPC* c[10], int me);
 	int getRoom();
 	void setAlibi(NPC* c[10], int me);
@@ -51,7 +51,7 @@ public:
 	Murderer(string n);
 	~Murderer();
 	void newChance();
-	void doesKill(NPC* n[10]);
+	void doesKill(NPC* n[10], int me);
 	bool getInnocent();
 };
 
