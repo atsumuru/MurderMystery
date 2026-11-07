@@ -35,6 +35,7 @@ public:
 	int getTalksLeft();
 	int getNPCsLeft();
 	NPC* getNPC(int i);
+	bool getIsWin();
 };
 
 #endif
