@@ -30,12 +30,16 @@ inline NPC::NPC(string name) : name(name) {
 	// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
 	room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
 	alibi = name + " was in train car " + std::to_string(room);
+	cout << room << endl;
 }
-void inline NPC::setAlibi(NPC* c[10]) {
-	if( this->checkOtherInAlibi(c) == 0 ) {
-		alibi = alibi + " by themselves.";
+void inline NPC::setAlibi(NPC* c[10], int me) {
+    //cout << "setting alibi";
+	if(this->checkOtherInAlibi(c, me) != -1) {
+	    alibi = alibi + " with " + c[this->checkOtherInAlibi(c, me)]->name + ".";
+	    //cout << "with another";
 	} else {
-		alibi = alibi + " with " + c[this->checkOtherInAlibi(c)]->name + ".";
+		alibi = alibi + " by themselves.";
+	//	cout << "alone";
 	}
 }
 string inline NPC::getAlibi() { return alibi; }
@@ -53,19 +57,23 @@ bool inline NPC::getAlive() { return isAlive; }
 bool inline NPC::getInnocent() { return isInnocent; }
 int inline NPC::getTalksToForgiveness() { return talksToForgiveness; }
 string inline NPC::getName() { return name; }
-string inline NPC::getAlibi() { return alibi; }
 string inline NPC::getMotive(int n) { return motive[n]; }
 void inline NPC::newChance() {}
 void inline NPC::doesKill(NPC* c[10]) {}
-int inline NPC::checkOtherInAlibi(NPC* c[10]) {
+int inline NPC::checkOtherInAlibi(NPC* c[10], int me) {
+    //cout << "in check alibi function" << endl;
 	for (int i = 0; i < 10; i ++) {
-		if(c[i]->getRoom() == room) {
+		if(c[i]->getRoom() == room && i != me) {
+		    //cout << "returning value" << endl;
 			return i;
 		}
+		//cout << i << " else" << endl;
 	}
-	return 0;
+	//cout << "it's me" << endl;
+	return -1;
 }
-int inline NPC::getRoom() { return room; }
+int inline NPC::getRoom() { //cout << "in getroom function" << endl; 
+return room; }
 
 inline Murderer::Murderer(string n) {
 		name = n;
@@ -75,6 +83,9 @@ inline Murderer::Murderer(string n) {
 		lastWrongAccuse = false;
 		numberToKill = 0;
 		this->name = name;
+		room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
+	    alibi = name + " was in train car " + std::to_string(room);
+    	cout << room << endl;
 			// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
 }
 inline Murderer::~Murderer() {
