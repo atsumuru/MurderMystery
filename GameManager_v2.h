@@ -9,7 +9,7 @@
 #include <string>
 #include <fstream>
 #include "NPCClass.cpp"
-#include "NPCClass.h"
+#include "NPCClass_v2.h"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ protected:
 	int talksLeft;
 	bool isWin;
 public:
-	GameManager(int charNum) : numOfChars(charNum);
+	GameManager(int charNum);
 	~GameManager();
 	void incrementTalks();
 	void startRound();
