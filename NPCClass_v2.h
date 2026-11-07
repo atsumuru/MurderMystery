@@ -22,7 +22,6 @@ protected:
 	string alibi;
 	string dialogue[5];
 	int room;
-	string alibi;
 public:
 	NPC();
     virtual	~NPC();
@@ -38,10 +37,9 @@ public:
 	string getMotive(int n);
 	virtual void newChance(); // to make murderer work
 	virtual void doesKill(NPC* c[10]); // to make murderer work
-	int checkOtherInAlibi(NPC* c[10]);
+	int checkOtherInAlibi(NPC* c[10], int me);
 	int getRoom();
-	void setAlibi(NPC* c[10]);
-	string getAlibi();
+	void setAlibi(NPC* c[10], int me);
 };
 
 class Murderer : public NPC {
