@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+#include "GameManager.cpp"
+#include "NPCClass.cpp"
+#include "NPCClass_v2.h"
+
+using namespace std;
+
+int main() {
+	int numberOfCharacters = 10;
+	GameManager gm(numberOfCharacters);
+	
+	//cout << "checkpoint";
+	
+	for (int i = 0; i < 10; i++) {
+
+	    NPC* temp = gm.getNPC(i);
+	    cout << temp->getAlibi() << endl;
+	}
+	
+	//cout << "talks:" << gm.getTalksLeft() << endl;
+	//cout << "rounds:" << gm.getRoundsDone() << endl;
+	//cout << "NPCs alive:" << gm.getNPCsLeft() << endl;
+	//gm.run();
+	//gm.run();
+	return 0;
+}
