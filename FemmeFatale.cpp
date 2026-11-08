@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include "FemmeFatale.h"
 
-int main()
+FemmeFatale::FemmeFatale()
 {
-    cout << R"(
+    name = "MADAME MARGAUX ROUGE";
+
+    ascii = R"(
                     -+#######*--                   
                  *##*####*+***####*                
                #*=---=+#*+=-+*%*#**#*              
@@ -30,8 +31,12 @@ int main()
      =        *##*:.             .:%*#-....*       
     *.       =#****###%%%%+--*%%##***#%+....=      
     )";
-    
-    cout << endl;
-    
-    return 0;
+
+    catchphrase[0] = "\"FEMME FATALE Catchphrase #1\"";
+    catchphrase[1] = "\"FEMME FATALE Catchphrase #2\"";
+    catchphrase[2] = "\"FEMME FATALE Catchphrase #3\"";
+
+    motive[0] = "FEMME FATALE Positive Motive";
+    motive[1] = "FEMME FATALE Neutral Motive";
+    motive[2] = "FEMME FATALE Negative Motive";
 }
