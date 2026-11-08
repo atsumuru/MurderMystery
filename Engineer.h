@@ -1,7 +1,7 @@
 #ifndef ENGINEER_H
 #define ENGINEER_H
 
-#include "characterFile.h"
+#include "CharacterFile.h"
 
 class Engineer : public CharacterFile
 {
