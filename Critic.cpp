@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include "Critic.h"
 
-int main()
+Critic::Critic()
 {
-    cout << R"(
+    name = "MR. REGINALD SINCLAIR";
+
+    ascii = R"(
                          .+@@@@@@@@++.                 
                       @@@%@@@@@%%@%%@@@@@              
                      @%#**#%%%%@@%%#%@%%%@             
@@ -30,8 +31,12 @@ int main()
         @%#%#%%%%%#%%%%%%#@=. .:+  += %%%@%%%%%%@.     
        @@##%#%%%%%@%##++++=@::=++-  %-=%%#%%%%%%@@     
     )";
-    
-    cout << endl;
-    
-    return 0;
+
+    catchphrase[0] = "\"CRITIC Catchphrase #1\"";
+    catchphrase[1] = "\"CRITIC Catchphrase #2\"";
+    catchphrase[2] = "\"CRITIC Catchphrase #3\"";
+
+    motive[0] = "CRITIC Positive Motive";
+    motive[1] = "CRITIC Neutral Motive";
+    motive[2] = "CRITIC Negative Motive";
 }
