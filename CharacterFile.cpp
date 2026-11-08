@@ -1,4 +1,4 @@
-#include "characterFile.h"
+#include "CharacterFile.h"
 
 void CharacterFile::displayCharacter()
 {
