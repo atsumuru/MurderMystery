@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include "Doctor.h"
 
-int main()
+Doctor::Doctor()
 {
-    cout << R"(
+    name = "DOCTOR ANDREW REYNOLDS";
+
+    ascii = R"(
                #**#:-                             
             :*=+++**##                            
            =##**+++***######==                    
@@ -31,8 +32,12 @@ int main()
      *==+++++++***++*  ==       #+++*++++*#       
     *+++==+++++**++++#          #+=++*+++**+      
     )";
-    
-    cout << endl;
-    
-    return 0;
+
+    catchphrase[0] = "\"DOCTOR Catchphrase #1\"";
+    catchphrase[1] = "\"DOCTOR Catchphrase #2\"";
+    catchphrase[2] = "\"DOCTOR Catchphrase #3\"";
+
+    motive[0] = "DOCTOR Positive Motive";
+    motive[1] = "DOCTOR Neutral Motive";
+    motive[2] = "DOCTOR Negative Motive";
 }
