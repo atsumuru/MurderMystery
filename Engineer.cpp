@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include "Engineer.h"
 
-int main()
+Engineer::Engineer()
 {
-    cout << R"(
+    name = "MS. CASSIE (CASSANDRA) HARDWELL";
+
+    ascii = R"(
                     +%%##%%%%++                   
                 =%%######*##*#%%##**              
               :%**+**+==**+-###+:=*#--            
@@ -29,8 +30,12 @@ int main()
      :        %*#:                +##+    +       
     +        :%#: %#************##. %%=    =      
     )";
-    
-    cout << endl;
-    
-    return 0;
+
+    catchphrase[0] = "\"ENGINEER Catchphrase #1\"";
+    catchphrase[1] = "\"ENGINEER Catchphrase #2\"";
+    catchphrase[2] = "\"ENGINEER Catchphrase #3\"";
+
+    motive[0] = "ENGINEER Positive Motive";
+    motive[1] = "ENGINEER Neutral Motive";
+    motive[2] = "ENGINEER Negative Motive";
 }
