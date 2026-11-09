@@ -24,7 +24,8 @@ int main()
     srand(time(NULL));
 	GameManager gm(numberOfCharacters);
 	// start screen
-	// run intro, cutscene, instructions
+	// run instructions
+	// run prologue
 	while( gm.getIsWin() == false && gm.getNPCsLeft() > 1 ) {
 	    gm.run();
 	}
