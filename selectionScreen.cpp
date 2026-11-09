@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 void selectionScreen()
 {
     cout << "WHO WILL YOU INTERROGATE?" << endl;
@@ -8,52 +5,52 @@ void selectionScreen()
     cout << endl;
     
     cout << "OPTION ONE:    " << endl;
-    cout << "   MRS. LENORA HUDSON" << endl;
+    cout << "   THE BARONESS" << endl;
     
     cout << endl;
     
     cout << "OPTION TWO:    " << endl;
-    cout << "   MADAME MARGAUX ROUGE" << endl;
+    cout << "   THE FEMME FATALE" << endl;
     
     cout << endl;
     
     cout << "OPTION THREE:  " << endl;
-    cout << "   MS. CASSIE (CASSANDRA) HARDWELL" << endl;
+    cout << "   THE ENGINEER" << endl;
     
     cout << endl;
     
     cout << "OPTION FOUR:   " << endl;
-    cout << "   DOCTOR ANDREW REYNOLDS" << endl;
+    cout << "   THE DOCTOR" << endl;
     
     cout << endl;
     
     cout << "OPTION FIVE:   " << endl;
-    cout << "   MR. REGINALD SINCLAIR" << endl;
+    cout << "   THE CRITIC" << endl;
     
     cout << endl;
     
     cout << "OPTION SIX:    " << endl;
-    cout << "   PROFESSOR ARCHWIN STEIN" << endl;
+    cout << "   THE PROFESSOR" << endl;
     
     cout << endl;
     
     cout << "OPTION SEVEN:  " << endl;
-    cout << "   MR. JACKSON (HANDY) CONROY" << endl;
+    cout << "   THE SERVANT" << endl;
     
     cout << endl;
     
     cout << "OPTION EIGHT:  " << endl;
-    cout << "   PI PRESTON JONES" << endl;
+    cout << "   THE INVESTIGATOR" << endl;
     
     cout << endl;
     
     cout << "OPTION NINE:   " << endl;
-    cout << "   MR. WILLIAM O'DOYLE" << endl;
+    cout << "   THE BARTENDER" << endl;
     
     cout << endl;
     
     cout << "OPTION TEN:    " << endl;
-    cout << "   MR. ARNOLD HARRIS" << endl;
+    cout << "   THE CONDUCTOR" << endl;
     
 }
 
