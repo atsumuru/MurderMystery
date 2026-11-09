@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include "Bartender.h"
 
-int main()
+Bartender::Bartender()
 {
-    cout << R"(
+    name = "MR. WILLIAM O'DOYLE";
+
+    ascii = R"(
                     =#******#==                   
                 -#*+*****+=*=+**##.               
               .*-::::+*=-.:=+***+==#              
@@ -29,8 +30,12 @@ int main()
      :      :#+**##-  ##         .####:   +       
     +        +***#*##.           #*###%    =      
     )";
-    
-    cout << endl;
-    
-    return 0;
+
+    catchphrase[0] = "\"BARTENDER Catchphrase #1\"";
+    catchphrase[1] = "\"BARTENDER Catchphrase #2\"";
+    catchphrase[2] = "\"BARTENDER Catchphrase #3\"";
+
+    motive[0] = "BARTENDER Positive Motive";
+    motive[1] = "BARTENDER Neutral Motive";
+    motive[2] = "BARTENDER Negative Motive";
 }
