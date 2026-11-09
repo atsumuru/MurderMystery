@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include "Conductor.h"
 
-int main()
+Conductor::Conductor()
 {
-    cout << R"(
+    name = "MR. ARNOLD HARRIS";
+
+    ascii = R"(
                 *%#####%%#%%========-             
                .%##**#*####*##########%           
                 *##***#################%          
@@ -32,8 +33,12 @@ int main()
      %***#######%###%.     -    %###%%####%       
     %#*#**####*#%#*##%     .=   %#*#%%####%#      
     )";
-    
-    cout << endl;
-    
-    return 0;
+
+    catchphrase[0] = "\"CONDUCTOR Catchphrase #1\"";
+    catchphrase[1] = "\"CONDUCTOR Catchphrase #2\"";
+    catchphrase[2] = "\"CONDUCTOR Catchphrase #3\"";
+
+    motive[0] = "CONDUCTOR Positive Motive";
+    motive[1] = "CONDUCTOR Neutral Motive";
+    motive[2] = "CONDUCTOR Negative Motive";
 }
