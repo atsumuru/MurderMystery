@@ -33,13 +33,16 @@ Baroness::Baroness()
         %=::-----++---------%@@@@@@@*-----+#=--=#-
         )";
 
-    catchphrase[0] = "\"BARONESS Catchphrase #1\"";
-    catchphrase[1] = "\"BARONESS Catchphrase #2\"";
-    catchphrase[2] = "\"BARONESS Catchphrase #3\"";
+    catchphrase[0] = "\"Please tell me you found the one who killed my husband.\"";
+    catchphrase[1] = "\"This entire situation is terrifying.\"";
+    catchphrase[2] = "\"Yes, sir?\"";
 
-    motive[0] = "BARONESS Positive Motive";
-    motive[1] = "BARONESS Neutral Motive";
-    motive[2] = "BARONESS Negative Motive";
+    motive[0] = R"(
+            "How could you suggest such a thing? My husband may not have been the best person, but I loved
+             him with all my heart! I can only imagine when I can begin to move on..."
+            )";
+    motive[1] = "\"BARONESS Neutral Motive\"";
+    motive[2] = "\"BARONESS Negative Motive\"";
 } 
 //Use this as an outline -Esra P.
 friend ostream& operator <<(const ostream& os, const Baroness& b) {
