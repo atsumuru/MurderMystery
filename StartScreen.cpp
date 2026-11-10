@@ -1,7 +1,8 @@
-#include <iostream>
-using namespace std;
+#include "StartScreen.h"
+#include "Prologue.h"
+#include "Instructions.h"
 
-int main()
+void startScreen()
 {
     cout << R"(
     -----------------------------------------------------------------------------------------------------------------------------------
@@ -14,13 +15,37 @@ int main()
         ##      ##  ##   ##  ##  ##   ##   ##  ##      ##  ##       ##      ##     ##         ##    ##    ##      ##  ##     ##  
         ##      ##   #####   ##   ##  ######   ######  ##   ##      ##      ##     ##     #####     ##    ######  ##   ##    ##  
     
+                                                    THE MURDER OF CHARLES HUDSON
+
     -----------------------------------------------------------------------------------------------------------------------------------
     )";
     
     cout << endl;
     
-    cout << "   START GAME" << endl;
+    cout << "   START" << endl;
     cout << "   INSTRUCTIONS" << endl;
+}
+
+void gameOptions()
+{
+    string option;
     
-    return 0;
+    cout << endl;
+    cout << "   CHOOSE AN OPTION: ";
+    cin >> option;
+    
+    if(option == "start" || option == "s")
+    {
+        prologueMain();
+    }
+    if(option == "instructions" || option == "i")
+    {
+        instructionsMain();
+    }
+}
+
+void startScreenMain()
+{
+    startScreen();
+    gameOptions();
 }
