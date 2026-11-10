@@ -78,5 +78,74 @@ int inline GameManager::getTalksLeft() { return talksLeft; }
 int inline GameManager::getNPCsLeft() { return NPCsLeft; }
 inline NPC* GameManager::getNPC(int i) { return characters[i]; }
 bool inline GameManager::getIsWin() { return isWin;}
+void inline GameManager::winScreen() {
+	cout << R"(
+	    ⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣴⠾⠛⢉⣹⣧⣤⣤⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣽⠷⠾⠛⠉⠀⠸⣧⣄⡈⢹⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣰⣿⣄⠀⠀⠀⠀⠀⠀⠙⠛⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢿⡀⠙⢷⣄⠀⠀⠀⠀⠀⣴⠟⠷⢀⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠻⢦⡴⣿⣀⡀⠀⠀⠀⠛⢂⣴⡿⢿⣿⣷⣶⣶⣶⣶⣤⣀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠛⠉⢻⡆⠀⠀⠀⠙⢿⣷⣶⡿⠋⠉⠀⠈⠙⢿⣿⣷⡀⠀
+⠀⠀⠀⠀⠀⠀⢀⣿⣷⢶⣤⣤⠀⠀⠀⠀⢀⠙⠋⠀⠀⠀⠀⠀⠀⠀⢹⣿⣧⠀
+⠀⠀⠀⢀⣤⠀⣼⣿⣧⣰⣿⡇⠀⠀⠀⠀⢸⣷⡄⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠀
+⠀⠀⣴⣿⡿⠀⠀⠉⠉⠛⢿⣿⣦⠀⠀⠀⠈⢿⣿⣄⠀⠀⠀⠀⠀⠀⣾⣿⠇⠀
+⠀⣸⣿⡏⠀⠀⠀⠀⠀⠀⠀⢻⣿⡆⠀⠀⠀⠈⠻⣿⣿⣶⣶⣶⣷⣄⠉⠉⠀⠀
+⠀⢿⣿⡇⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠉⠉⠛⠋⠉⠁⠀⠀⠀⠀
+⠀⠸⣿⣷⣄⠀⠀⠀⠀⠀⣠⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠘⠿⠏⢠⣶⣶⣶⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠈⠙⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	    )" << endl; // https://emojicombos.com/handcuffs
+	cout << R"(
+		  __   __  _______  __   __    _     _  ___   __    _ 
+		 |  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |
+		 |  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |
+		 |       ||  | |  ||  |_|  |  |       ||   | |       |
+		 |_     _||  |_|  ||       |  |       ||   | |  _    |
+		   |   |  |       ||       |  |   _   ||   | | | |   |
+		   |___|  |_______||_______|  |__| |__||___| |_|  |__| )" << endl; // https://patorjk.com/software/taag/#p=display&f=Modular&t=YOU+WIN&x=none&v=4&h=4&w=80&we=false
+	cout << "Hours Played: " << roundsDone << endl;
+	if (NPCsLeft == 10) {
+		cout << "You solved the murder without any deaths!" << endl;
+	}
+	else {
+		cout << "You solved the murder; however, " << 10 - NPCsLeft << " characters died." << endl;
+	}
+	cout << "The real murderer was " << characters[whichIsMurderer]->getName() << "." << endl;
+};
+ 
+void inline GameManager::loseScreen() {
+	cout << R"(
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⢤⣠⢷⣝⢦⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠒⣲⣦⣺⣳⣤⡿⠛⠃⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠉⠢⣣⣁⠀⣀⠙⢧⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⡎⠑⢤⡼⡩⡪⠷⠀⠀⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣶⡞⢯⣠⡻⠼⡇⠀⠀⠀⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡷⢌⠻⣶⡟⡄⠈⠁⠀⠀⠐⢣⡀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⡴⣷⣿⡗⠀⣡⠊⠻⠋⠒⢄⠀⠀⢀⠔⠙⢦⡀⠀
+⠀⠀⠀⠀⠀⠀⡠⠊⠁⢺⣿⢇⠜⠁⠀⠀⠀⠀⣠⠗⠊⠀⠀⣠⡺⠆⠀
+⠀⠀⠀⠀⣠⣾⡗⠀⠀⢸⡿⠋⠀⠀⠀⠀⠀⠀⠻⣆⠛⣠⣞⢕⢽⣆⠀
+⠀⠀⠀⣴⣿⣿⡇⠀⢀⠞⠁⠀⠀⠀⠀⠀⠀⠀⢐⡯⡪⡫⡢⣑⣕⢕⠀
+⠀⠀⣼⣿⣿⣿⠇⡰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢮⡺⣾⣮⡪⡳⠀
+⢀⣼⣿⣿⣿⠿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠺⣷⣝⢮⠀
+⠾⠿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠪⣻⡇
+
+)" << endl; // https://emojicombos.com/knife
+
+	cout << R"(
+ __   __  _______  __   __    ___      _______  _______  _______ 
+|  | |  ||       ||  | |  |  |   |    |       ||       ||       |
+|  |_|  ||   _   ||  | |  |  |   |    |   _   ||  _____||    ___|
+|       ||  | |  ||  |_|  |  |   |    |  | |  || |_____ |   |___ 
+|_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  ||    ___|
+  |   |  |       ||       |  |       ||       | _____| ||   |___ 
+  |___|  |_______||_______|  |_______||_______||_______||_______|
+
+)" << endl;
+	cout << "All characters died, leaving only you and the murderer. You were killed." << endl;
+	cout << "Hours Played: " << roundsDone << endl;
+	cout << "The real murderer was " << characters[whichIsMurderer]->getName() << "." << endl;
+	};
 
 #endif
