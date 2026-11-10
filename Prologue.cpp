@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+#include "Prologue.h"
 
 // created 11/9/2026
 // by Payton Phillips
@@ -15,7 +14,32 @@ using namespace std;
 
 void prologue()
 {
-    cout << "Here is the prologue." << endl;
-    cout << "This one guy died." << endl;
-    cout << "Find out who don' it." << endl;
+    cout << "   Here is the prologue." << endl;
+    cout << "   This one guy died." << endl;
+    cout << "   Find out who don' it." << endl;
+}
+
+void gameContinue()
+{
+    string choice;
+    
+    cout << "   READY TO START? (YES OR NO) ";
+    cin >> choice;
+    
+    if(choice == "yes" || choice == "y")
+    {
+        // pull selectionscreen function
+    }
+    else
+    {
+        cout << "   How dare you." << endl;
+        cout << endl;
+        exit(0);
+    }
+}
+
+void prologueMain()
+{
+    prologue();
+    gameContinue();
 }
