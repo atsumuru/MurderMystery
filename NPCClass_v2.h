@@ -33,13 +33,11 @@ public:
 	bool getInnocent();
 	int getTalksToForgiveness();
 	string getName();
-	string getAlibi();
 	string getMotive(int n);
 	virtual void newChance(); // to make murderer work
 	virtual void doesKill(NPC* c[10], int me); // to make murderer work
 	int checkOtherInAlibi(NPC* c[10], int me);
 	int getRoom();
-	void setAlibi(NPC* c[10], int me);
 };
 
 class Murderer : public NPC {
