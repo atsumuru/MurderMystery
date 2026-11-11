@@ -44,8 +44,10 @@ Baroness::Baroness()
     motive[1] = "\"BARONESS Neutral Motive\"";
     motive[2] = "\"BARONESS Negative Motive\"";
 } 
-//Use this as an outline -Esra P.
-friend ostream& operator <<(const ostream& os, const Baroness& b) {
-    os << b.name << endl << b.ascii << endl; 
-    return os;
-}
+// //Use this as an outline -Esra P.
+// friend ostream& operator <<(const ostream& os, const Baroness& b) {
+//     os << b.name << endl << b.ascii << endl; 
+//     return os;
+// }
+
+// didn't end up using operator overload --Payton P.
