@@ -6,7 +6,7 @@
 #include <chrono>
 #include <thread>
 
-#include "NPCCLass.cpp"
+#include "NPCClass_v2.h"
 
 using namespace std;
 using namespace std::this_thread; // sleep_for, sleep_until
@@ -53,14 +53,15 @@ void endOfRoundScreen(int rounds, NPC* char1, NPC*char2 = NULL) {
         cout << " has been found dead.";
     }
     cout << endl << endl << endl;
+    sleep_for(seconds(7));
 }
 
-int main() {
-    NPC firstKill("Charlie");
-    NPC secondKill("Fred");
-    endOfRoundScreen(1, &firstKill);
-    sleep_for(seconds(5));
-    endOfRoundScreen(2, &firstKill, &secondKill);
-}
+// int main() {
+//     NPC firstKill("Charlie");
+//     NPC secondKill("Fred");
+//     endOfRoundScreen(1, &firstKill);
+//     sleep_for(seconds(5));
+//     endOfRoundScreen(2, &firstKill, &secondKill);
+// }
 
 #endif
