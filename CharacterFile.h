@@ -19,11 +19,11 @@ public:
     CharacterFile();
     // "virtual" allows the child objects to be properly destroyed
     virtual ~CharacterFile();
-
-    void displayCharacter();
-    void displayName();
+    // Got rid of displayAscii and displayName for cout override - Esra P.
     void displayCatchphrase();
-    void displayMotive();
+    void displayMotive(); 
+
+    friend ostream& operator <<(ostream& os, const CharacterFile&); // Prototype for override operator - Esra P.
 };
 
 #endif
