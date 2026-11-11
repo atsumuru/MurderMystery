@@ -29,7 +29,7 @@ void gameContinue()
     
     if(choice == "yes" || choice == "y")
     {
-        // pull selectionscreen function
+        selectionScreenMain();
     }
     else
     {
