@@ -12,6 +12,7 @@
 #include <string>
 
 #include "NPCClass_v2.h"
+#include "Alibi.cpp"
 
 using namespace std;
 
@@ -28,21 +29,10 @@ inline NPC::NPC(string name) : name(name) {
 	isInnocent = true;
 	talksToForgiveness = 0;
 	// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
-	room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
+	room = getRoom();
 	alibi = name + " was in train car " + std::to_string(room);
 }
-void inline NPC::setAlibi(NPC* c[10], int me) {
-	if(this->checkOtherInAlibi(c, me) != -1) {
-	    alibi = alibi + " with " + c[this->checkOtherInAlibi(c, me)]->name + ".";
-	} else {
-		alibi = alibi + " by themselves.";
-	}
-}
-string inline NPC::getAlibi() { return alibi; }
-void inline NPC::kill() { 
-    isAlive = false;
-    cout << name << " has been killed." << endl;
-}
+
 void inline NPC::accuse() { 
     talksToForgiveness = 3; 
 }
@@ -57,14 +47,7 @@ string inline NPC::getName() { return name; }
 string inline NPC::getMotive(int n) { return motive[n]; }
 void inline NPC::newChance() {}
 void inline NPC::doesKill(NPC* c[10], int me) {}
-int inline NPC::checkOtherInAlibi(NPC* c[10], int me) {
-	for (int i = 0; i < 10; i ++) {
-		if(c[i]->getRoom() == room && i != me) {
-			return i;
-		}
-	}
-	return -1;
-}
+
 int inline NPC::getRoom() { return room; }
 
 inline Murderer::Murderer(string n) {
@@ -74,6 +57,7 @@ inline Murderer::Murderer(string n) {
 		isInnocent = false;
 		lastWrongAccuse = false;
 		numberToKill = 0;
+		killTwice = false;
 		this->name = name;
 		room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
 	    alibi = name + " was in train car " + std::to_string(room);
