@@ -10,21 +10,22 @@
 #include <fstream>
 #include <cstring>
 #include <string>
+#include <vector>
 
 #include "NPCClass_v2.h"
-#include "Alibi.cpp"
+//#include "Alibi.cpp"
 
 using namespace std;
 
-inline NPC::NPC() {
+NPC::NPC() {
 		isAlive = true;
 		isInnocent = true;
 		talksToForgiveness = 0;
 }
-inline NPC::~NPC() {
+NPC::~NPC() {
     delete this;
 }
-inline NPC::NPC(string name) : name(name) {
+NPC::NPC(string name) : name(name) {
 	isAlive = true;
 	isInnocent = true;
 	talksToForgiveness = 0;
@@ -33,24 +34,24 @@ inline NPC::NPC(string name) : name(name) {
 	alibi = name + " was in train car " + std::to_string(room);
 }
 
-void inline NPC::accuse() { 
+void NPC::accuse() { 
     talksToForgiveness = 3; 
 }
-string inline NPC::dialogueLine() {
+string NPC::dialogueLine() {
 	int x = rand() % 5;
 	return dialogue[x];
 }
-bool inline NPC::getAlive() { return isAlive; }
-bool inline NPC::getInnocent() { return isInnocent; }
-int inline NPC::getTalksToForgiveness() { return talksToForgiveness; }
-string inline NPC::getName() { return name; }
-string inline NPC::getMotive(int n) { return motive[n]; }
-void inline NPC::newChance() {}
-void inline NPC::doesKill(NPC* c[10], int me) {}
+bool NPC::getAlive() { return isAlive; }
+bool NPC::getInnocent() { return isInnocent; }
+int NPC::getTalksToForgiveness() { return talksToForgiveness; }
+string NPC::getName() { return name; }
+string NPC::getMotive(int n) { return motive[n]; }
+void NPC::newChance() {}
+vector<int> NPC::doesKill(NPC* c[10], int me) { return {-1};}
+int NPC::getRoom() { return room; }
+void NPC::kill() { isAlive = false; }
 
-int inline NPC::getRoom() { return room; }
-
-inline Murderer::Murderer(string n) {
+Murderer::Murderer(string n) {
 		name = n;
 		isAlive = true;
 		talksToForgiveness = 0;
@@ -63,10 +64,10 @@ inline Murderer::Murderer(string n) {
 	    alibi = name + " was in train car " + std::to_string(room);
 			// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
 }
-inline Murderer::~Murderer() {
+Murderer::~Murderer() {
     delete this;
 }
-void inline Murderer::newChance() { // calculate chance of second kill, should be executed after last talk of the round but before round end
+void Murderer::newChance() { // calculate chance of second kill, should be executed after last talk of the round but before round end
 		int chanceToKillTwice = rand() % 100 + 1;
 		int bar;
 		if (lastWrongAccuse) {
@@ -83,14 +84,19 @@ void inline Murderer::newChance() { // calculate chance of second kill, should b
 			numberToKill = 1;
 		}
 }
-void inline Murderer::doesKill(NPC* n[10], int me) { // input array of characters
+vector<int> Murderer::doesKill(NPC* n[10], int me) { // input array of characters
+        int killNumber = 0;
+        vector<int> kills = {-1, -1};
 		for (int i = 0; i < numberToKill; i++) { // kill number of times determined by numberToKill
 			int x = rand() % 10;
 			while (x == me || n[x]->getAlive() == false ) { // make sure murderer does not target themselves or a dead person
 				x = rand() % 10;
 			}
 			n[x]->kill();
+			kills[killNumber] = x;
+			killNumber++;
 		}
+		return kills;
 }
-bool inline Murderer::getInnocent() { return isInnocent; }
+bool Murderer::getInnocent() { return isInnocent; }
 #endif
