@@ -8,10 +8,7 @@ void characterInfo(CharacterFile* character)
 {
     if (character == nullptr) { return; }
     
-    character->displayCharacter();
-    cout << endl;
-    character->displayName();
-    cout << endl;
+    cout << character << endl; // Adapted for cout override - Esra P.
     character->displayCatchphrase();
     cout << endl;
 }
