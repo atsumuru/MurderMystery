@@ -12,18 +12,20 @@ int setRoom() {
 	return room;
 }
 
-string setAlibi(Class* chars[10], int me) {
-	if (checkOtherInAlibi(chars, int me) == 0) {
-		//chars[me]->alibi = chars[me]->name " was in room " + chars[me]->room + " by themselves.";
+string setAlibi(Character* chars[10], int me) {
+	if (checkOtherInAlibi(chars, me) == 0) {
+		string temp = chars[me]->getName() + " was in room " + chars[me]->getRoom() + " by themselves.";
+		return temp;
 	}
 	else {
-		//chars[me]->alibi = chars[me]->name " was in room " + chars[me]->room + " with " + c[checkOtherInAlibi(int* chars[10])]->name + ".";
+		string temp = chars[me]->getName() + " was in room " + chars[me]->getRoom() + " with " + c[checkOtherInAlibi(int* chars[10])]->name + ".";
+		return temp;
 	}
 }
 
-int  checkOtherInAlibi(Class* chars[10], int me) {
+int  checkOtherInAlibi(Character* chars[10], int me) {
 	for (int i = 0; i < 10; i++) {
-			if (chars[i]->room == chars[me]->room) {
+			if (chars[i]->getRoom() == chars[me]->getRoom() {
 					if (i != me) {
 							return i;
 					}
