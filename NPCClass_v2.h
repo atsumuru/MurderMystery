@@ -9,6 +9,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
+
+//#include "NPCClass.cpp"
 
 using namespace std;
 
@@ -35,7 +38,7 @@ public:
 	string getName();
 	string getMotive(int n);
 	virtual void newChance(); // to make murderer work
-	virtual void doesKill(NPC* c[10], int me); // to make murderer work
+	virtual vector<int> doesKill(NPC* c[10], int me); // to make murderer work
 	int checkOtherInAlibi(NPC* c[10], int me);
 	int getRoom();
 };
@@ -49,7 +52,7 @@ public:
 	Murderer(string n);
 	~Murderer();
 	void newChance();
-	void doesKill(NPC* n[10], int me);
+	vector<int> doesKill(NPC* n[10], int me);
 	bool getInnocent();
 };
 
