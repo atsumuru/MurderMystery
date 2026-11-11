@@ -18,17 +18,7 @@ CharacterFile::CharacterFile()
 
 // runs when CharacterFile is destroyed
 CharacterFile::~CharacterFile() {}
-
-void CharacterFile::displayCharacter()
-{
-    cout << ascii << endl;
-}
-    
-void CharacterFile::displayName()
-{
-    cout << name << endl;
-}
-
+// Got rid of displayName and Ascii - Esra P.
 void CharacterFile::displayCatchphrase()
 {
     // randomly pull one of the three catchphrases
@@ -41,7 +31,9 @@ void CharacterFile::displayMotive()
     // randomly pull one of the three motives
     int i = rand() % 3;
     cout << motive[i] << endl;
+} 
+// Added by Esra
+ostream& operator <<(ostream& os, const CharacterFile& cf) {
+    os << cf.name << endl << cf.ascii << endl; 
+    return os;
 }
-
-// friend os ...
-// override
