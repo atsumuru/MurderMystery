@@ -12,8 +12,10 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "GameManager.cpp" 
-#include "NPCClass.cpp"
+#include "GameManager_v2.h" 
+#include "NPCClass_v2.h"
+#include "StartScreen.h"
+#include "SelectionScreen.h"
 
 using namespace std;
 
@@ -23,7 +25,7 @@ int main()
     int numberOfCharacters = 10;
     srand(time(NULL));
 	GameManager gm(numberOfCharacters);
-	// start screen
+	startScreenMain();
 	// run instructions
 	// run prologue
 	while( gm.getIsWin() == false && gm.getNPCsLeft() > 1 ) {
