@@ -2,7 +2,7 @@
 
 FemmeFatale::FemmeFatale()
 {
-    name = "MADAME MARGAUX ROUGE";
+    name = "MADAME MARGAUX ROUGÊ";
 
     ascii = R"(
                     -+#######*--                   
