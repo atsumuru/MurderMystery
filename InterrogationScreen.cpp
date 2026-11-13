@@ -8,7 +8,7 @@ void characterInfo(CharacterFile* character)
 {
     if (character == nullptr) { return; }
     
-    cout << character << endl; // Adapted for cout override - Esra P.
+    cout << *character << endl; // Adapted for cout override - Esra P.
     character->displayCatchphrase();
     cout << endl;
 }
@@ -25,7 +25,7 @@ void interrogateOptions()
 }
 
 // gets choice
-void interrogateChoice(CharacterFile* character)
+void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count)
 {
     string choice;
     
@@ -42,7 +42,7 @@ void interrogateChoice(CharacterFile* character)
         
         if (choice == "alibi" || choice == "a")
         {
-            // call alibi from NPC Class
+            character->displayAlibi(characters, count);
         }
         else if (choice == "motive" || choice == "m")
         {
@@ -55,7 +55,7 @@ void interrogateChoice(CharacterFile* character)
         }
         else if (choice == "back" || choice == "b")
         {
-            selectionScreenMain();
+            return;
         }
         else
         {
@@ -66,16 +66,13 @@ void interrogateChoice(CharacterFile* character)
         // after making choice, clear screen, then replace (mayhaps)
         // catchphrase with motive/alibi text
     }
-    
-    // go through while loop so once you make a choice, you can chose something else
-    // if statements for making the choices
 }
 
-void interrogationScreenMain(CharacterFile* character)
-{ 
+void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count)
+{
     // checks if a character is selected
-    if (character == nullptr) { return; }
+    if (characters == nullptr) { return; }
     
     characterInfo(character);
-    interrogateChoice(character); 
+    interrogateChoice(character, characters, count);
 }
