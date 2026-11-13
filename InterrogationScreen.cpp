@@ -72,7 +72,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         else
         {
             cout << "INVALID CHOICE. TRY AGAIN." << endl;
-            cout << endl;
+            return;
         }
         
         // after making choice, clear screen, then replace (mayhaps)
