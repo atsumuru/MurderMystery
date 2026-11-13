@@ -41,38 +41,38 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         // display options
         interrogateOptions();
         
-        cout << "WHAT WOULD YOU LIKE TO DO? ";
+        cout << "WHAT WOULD YOU LIKE TO DO (TYPE FULL WORD)? ";
         cin >> choice;
         
-        if (choice == "alibi" || choice == "a")
+        if (choice == "alibi")
         {
             character->displayAlibi(characters, count);
             cout << endl;
             gm.incrementTalks();
         }
-        else if (choice == "motive" || choice == "m")
+        else if (choice == "motive")
         {
             character->displayMotive();
             cout << endl;
             gm.incrementTalks();
         }
-        else if (choice == "notes" || choice == "n")
+        else if (choice == "notes")
         {
             // not sure what I want to do here yet
         }
-        else if (choice == "back" || choice == "b")
+        else if (choice == "back")
         {
             return;
         }
-        else if(choice == "accuse" || choice == "a")
+        else if(choice == "accuse")
         {
             character->displayAccuse();
             gm.incrementTalks();
+            return;
         }
         else
         {
             cout << "INVALID CHOICE. TRY AGAIN." << endl;
-            return;
         }
         
         // after making choice, clear screen, then replace (mayhaps)
