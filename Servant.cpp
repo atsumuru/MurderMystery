@@ -3,6 +3,7 @@
 Servant::Servant()
 {
     name = "MR. JACKSON (HANDY) CONROY";
+    nickName = "Mr. Conroy";
 
     ascii = R"(
                    .*#******#**                   
