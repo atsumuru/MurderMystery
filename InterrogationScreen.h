@@ -8,9 +8,9 @@ using namespace std;
 
 // CharacterFile* character points to selected character file
 
-void characterInfo(CharacterFile* character);
+void characterInfo(CharacterFile* characters);
 void interrogateOptions();
-void interrogateChoice(CharacterFile* character);
-void interrogationScreenMain(CharacterFile* character);
+void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count);
+void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count);
 
 #endif
