@@ -1,5 +1,6 @@
 #include "CharacterFile.h"
 #include "GameManager_v2.h"
+#include "Alibi.h"
 
 // holds default values for testing
 CharacterFile::CharacterFile()
@@ -39,7 +40,9 @@ CharacterFile::CharacterFile(GameManager* gm) {
 }
 
 // runs when CharacterFile is destroyed
-CharacterFile::~CharacterFile() {}
+CharacterFile::~CharacterFile() {
+    delete npc;
+}
 // Got rid of displayName and Ascii - Esra P.
 void CharacterFile::displayCatchphrase()
 {
@@ -103,8 +106,68 @@ void CharacterFile::displayAlibi(CharacterFile* characters[], int count)
         return;
     }
     
-    // independent for each character
-    // was mainly hear for testing and integration
+    string room = getRoom();
+    int roomCount = countPeopleInRoom(characters, count, room, this);
+    string secondPerson = getSecondPerson(characters, count, room, this);
+
+    cout << endl;
+    
+    // dialogue for each room
+    if (room == "Engine Car")
+    {
+        cout << "I was in the Engine Car.";
+    }
+    else if (room == "Baggage Car")
+    {
+        cout << "I was in the Baggage Car.";
+    }
+    else if (room == "Dining Car")
+    {
+        cout << "I was in the Dining Car.";
+    }
+    else if (room == "Parlor Car")
+    {
+        cout << "I was in the Parlor Car.";
+    }
+    else if (room == "Observation Car")
+    {
+        cout << "I was in the Observation Car.";
+    }
+    else if (room == "Compartment Coach")
+    {
+        cout << "I was in the Compartment Coach.";
+    }
+    else
+    {
+        cout << "I can't remember where I was.";
+    }
+
+    // checks if this character is the murderer
+    if (npc->getInnocent() == false)
+    {
+        if (roomCount == 0)
+        {
+            cout << " I was by myself." << endl;
+        }
+        else
+        {
+            // murderer only names the first person in the room
+            cout << " I was with " << secondPerson << "." << endl;
+        }
+    }
+    
+    // regular character alibi
+    else
+    {
+        if (roomCount == 0)
+        {
+            cout << " I was by myself." << endl;
+        }
+        else if (roomCount == 1)
+        {
+            cout << " I was with " << secondPerson << ". They can confirm." << endl;
+        }
+    }
 }
 
 void CharacterFile::displayAccuse() {
@@ -125,7 +188,7 @@ void CharacterFile::displayAccuse() {
     }
     
     cout << endl;
-    cout << "\"How dare you! Of course I am not the murderer.\"" << endl << endl << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
+    cout << "\"How dare you! Of course I am not the murderer.\"" << endl << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
     npc->accuseTalks();
     gm->incrementTalks();
     
