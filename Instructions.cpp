@@ -1,5 +1,6 @@
 #include "Instructions.h"
 #include "StartScreen.h"
+#include "GameManager_v2.h"
 
 void instructions()
 {
@@ -40,7 +41,7 @@ void instructions()
     )";
 }
 
-void goBack()
+void goBack(GameManager& gm)
 {
     string choice;
     
@@ -49,17 +50,17 @@ void goBack()
   
     if(choice == "yes" || choice == "y")
     {
-        startScreenMain();
+        startScreenMain(gm);
     }
     else
     {
-        instructionsMain();
+        instructionsMain(gm);
     }
     
 }
 
-void instructionsMain()
+void instructionsMain(GameManager& gm)
 {
     instructions();
-    goBack();
+    goBack(gm);
 }
