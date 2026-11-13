@@ -2,6 +2,7 @@
 #define DOCTOR_H
 
 #include "CharacterFile.h"
+#include "Alibi.h"
 
 class Doctor : public CharacterFile
 {
