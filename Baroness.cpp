@@ -3,6 +3,7 @@
 Baroness::Baroness()
 {
     name = "MRS. LENORA HUDSON";
+    nickName = "Mrs. Hudson";
 
     ascii = R"(
                     ==@@@@*=
@@ -39,23 +40,76 @@ Baroness::Baroness()
 
     motive[0] = R"(
             "How could you suggest such a thing? My husband may not have been the best person, but I loved
-              him with all my heart! I can only imagine when I can begin to move on..."
+             him with all my heart! I can only imagine when I can begin to move on..."
             )";
     motive[1] = R"(
             "I would never kill my husband! But I will admit: Charles and I had gotten into a fight the 
-             other day over an...affair. I was upset, but I didn't hate him, definitely not to the extent 
-             of murder!"
+            other day over an...affair. I was upset, but I didn't hate him, definitely not to the extent 
+            of murder!"
             )";
     motive[2] = R"(
             "I loved my husband so much, but I simply couldn't ignore what he's done; I know it... He
-             slept with that harlot, Ms. Rougê. I was so angry that night, and it's terrible that 
-             he's passed. But now that he's gone, I'm ashamed to say a part of me is glad."
+            slept with that harlot, Ms. Rougê. I was so angry that night, and it's terrible that 
+            he's passed. But now that he's gone, I'm ashamed to say a part of me is glad."
             )";
-} 
-// //Use this as an outline -Esra P.
-// friend ostream& operator <<(ostream& os, const Baroness& b) {
-//     os << b.name << endl << b.ascii << endl; 
-//     return os;
-// }
+}
 
-// didn't end up using operator overload --Payton P.
+void Baroness::displayAlibi(CharacterFile* characters[], int count)
+{
+    string room = getRoom();
+    
+    int roomCount = countPeopleInRoom(characters, count, room);
+
+    string secondPerson = "";
+
+    for (int i = 0; i < count; i++)
+    {
+        if (characters[i] != this && characters[i]->getRoom() == room)
+        {
+            secondPerson = characters[i]->getNickName();
+            break;
+        }
+    }
+
+    cout << endl;
+    
+    // dialogue for each room
+    if (room == "Engine Car")
+    {
+        cout << "I was in the Engine Car.";
+    }
+    else if (room == "Baggage Car")
+    {
+        cout << "I was in the Baggage Car.";
+    }
+    else if (room == "Dining Car")
+    {
+        cout << "I was in the Dining Car.";
+    }
+    else if (room == "Parlor Car")
+    {
+        cout << "I was in the Parlor Car.";
+    }
+    else if (room == "Observation Car")
+    {
+        cout << "I was in the Observation Car.";
+    }
+    else if (room == "Compartment Coach")
+    {
+        cout << "I was in the Compartment Coach.";
+    }
+    else
+    {
+        cout << "I can't remember where I was.";
+    }
+    
+    //if they end up with someone
+    if (roomCount == 1)
+    {
+        cout << "I was by myself." << endl;
+    }
+    else if (roomCount == 2)
+    {
+        cout << "I was with " << secondPerson << ". They can confirm." << endl;
+    }
+}
