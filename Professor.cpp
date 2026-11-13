@@ -36,9 +36,9 @@ Professor::Professor()
     catchphrase[1] = "              \"This locomotive really is quite the marvel of modern science.\"";
     catchphrase[2] = "              \"Do you have a hypothesis yet as to the identity of the murderer?\"";
 
-    motive[0] = "I feel so badly for poor Madame Rouge- it must be so hard for her to have the Baron die so suddenly.";
-    motive[1] = "Charles and I weren't the closest back in school- I was the better student.";
-    motive[2] = "Charles always was a leech, even back in school. Margaux deserves better than being his second choice.";
+    motive[0] = "I feel so badly for poor Madame Rouge- it must be so hard for her to have the Baron die so suddenly. And no, of course I did not kill him.";
+    motive[1] = "Charles and I weren't the closest back in school- I was the better student. Why would I want to kill him?";
+    motive[2] = "Charles always was a leech, even back in school. Margaux deserves better than being his second choice. I don't mourn his loss.";
 }
 
 void Professor::displayAlibi(CharacterFile* characters[], int count)
