@@ -6,6 +6,7 @@
 #include "SelectionScreen.h"
 #include "InterrogationScreen.h"
 #include "Alibi.h"
+#include "GameManager_v2.h"
 
 #include "CharacterFile.h"
 #include "Baroness.h"
@@ -76,7 +77,7 @@ void selectionScreen()
     
 }
 
-void selectCharacter(CharacterFile* characters[], int count)
+void selectCharacter(GameManager& gm, int count)
 {
     int choice;
     
@@ -90,43 +91,43 @@ void selectCharacter(CharacterFile* characters[], int count)
     switch (choice)
     {
         case 1:
-            selectedCharacter = characters[0];
+            selectedCharacter = gm.characters[0];
             break;
             
         case 2:
-            selectedCharacter = characters[1];
+            selectedCharacter = gm.characters[1];
             break;
             
         case 3:
-            selectedCharacter = characters[2];
+            selectedCharacter = gm.characters[2];
             break;
             
         case 4:
-            selectedCharacter = characters[3];
+            selectedCharacter = gm.characters[3];
             break;
             
         case 5:
-            selectedCharacter = characters[4];
+            selectedCharacter = gm.characters[4];
             break;
             
         case 6:
-            selectedCharacter = characters[5];
+            selectedCharacter = gm.characters[5];
             break;
             
         case 7:
-            selectedCharacter = characters[6];
+            selectedCharacter = gm.characters[6];
             break;
             
         case 8:
-            selectedCharacter = characters[7];
+            selectedCharacter = gm.characters[7];
             break;
             
         case 9:
-            selectedCharacter = characters[8];
+            selectedCharacter = gm.characters[8];
             break;
             
         case 10:
-            selectedCharacter = characters[9];
+            selectedCharacter = gm.characters[9];
             break;
             
         default:
@@ -140,33 +141,21 @@ void selectCharacter(CharacterFile* characters[], int count)
     {
         // used the pointer to access the selected character file,
         // and pull it to the interrogation screen
-        interrogationScreenMain(selectedCharacter, characters, count);
+        interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
+    } else {
+        gm.setCharacterFiles();
+        interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
     }
 }
 
 // *** specifically this portions to pull the character information
 // also helps pull characters for alibi person selection
-void selectionScreenMain()
+void selectionScreenMain(GameManager& gm)
 {
-    CharacterFile* characters[10];
-
-    characters[0] = new Baroness();
-    characters[1] = new FemmeFatale();
-    characters[2] = new Engineer();
-    characters[3] = new Doctor();
-    characters[4] = new Critic();
-    characters[5] = new Professor();
-    characters[6] = new Servant();
-    characters[7] = new Investigator();
-    characters[8] = new Bartender();
-    characters[9] = new Conductor();
-    
-    assignRoom(characters, 10);
-    
     for(int i = 0; i < 10; i++) {
         try{
-        characters[i]->npc->setName(characters[i]->getName());
-        throw(characters[i]->getName());
+        gm.characters[i]->npc->setName(gm.characters[i]->getName());
+        throw(gm.characters[i]->getName());
         }
         catch(string n) {
             cout << "Error with " << n << endl;
@@ -174,12 +163,12 @@ void selectionScreenMain()
     }
     
     selectionScreen();
-    selectCharacter(characters, 10);
+    selectCharacter(gm, 10);
     
-    // deletes allocated memory
-    for (int i = 0; i < 10; i++)
-    {
-        delete characters[i];
-        characters[i] = nullptr;
-    }
+    // // deletes allocated memory
+    // for (int i = 0; i < 10; i++)
+    // {
+    //     delete characters[i];
+    //     characters[i] = nullptr;
+    // }
 }
