@@ -11,6 +11,7 @@
 using namespace std;
 
 void assignRoom(CharacterFile* characters[], int count);
-int countPeopleInRoom(CharacterFile* characters[], int count, string room);
+int countPeopleInRoom(CharacterFile* characters[], int count, string room, CharacterFile* currentCharacter);
+string getSecondPerson(CharacterFile* characters[], int count, string room, CharacterFile* currentCharacter);
 
 #endif
