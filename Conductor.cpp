@@ -2,7 +2,7 @@
 
 Conductor::Conductor()
 {
-    name = "MR. ARNOLD HARRIS";
+    name = "                MR. ARNOLD HARRIS";
     nickName = "Mr. Harris";
 
     ascii = R"(
@@ -35,9 +35,9 @@ Conductor::Conductor()
     %#*#**####*#%#*##%     .=   %#*#%%####%#      
     )";
 
-    catchphrase[0] = "\"Hmm.\"";
-    catchphrase[1] = "\"What?\"";
-    catchphrase[2] = "\"I hate my job...\"";
+    catchphrase[0] = "              \"Hmm.\"";
+    catchphrase[1] = "              \"What?\"";
+    catchphrase[2] = "              \"I hate my job...\"";
 
     motive[0] = R"(
             "I don't want to be here. Not just because of the murder, but because I need a break from smelling
@@ -58,19 +58,8 @@ Conductor::Conductor()
 void Conductor::displayAlibi(CharacterFile* characters[], int count)
 {
     string room = getRoom();
-    
-    int roomCount = countPeopleInRoom(characters, count, room);
-
-    string secondPerson = "";
-
-    for (int i = 0; i < count; i++)
-    {
-        if (characters[i] != this && characters[i]->getRoom() == room)
-        {
-            secondPerson = characters[i]->getNickName();
-            break;
-        }
-    }
+    int roomCount = countPeopleInRoom(characters, count, room, this);
+    string secondPerson = getSecondPerson(characters, count, room, this);
 
     cout << endl;
     
@@ -103,14 +92,15 @@ void Conductor::displayAlibi(CharacterFile* characters[], int count)
     {
         cout << "I can't remember where I was.";
     }
+
     
     //if they end up with someone
-    if (roomCount == 1)
+    if (roomCount == 0)
     {
-        cout << "I was by myself." << endl;
+        cout << " I was by myself." << endl;
     }
-    else if (roomCount == 2)
+    else if (roomCount == 1)
     {
-        cout << "I was with " << secondPerson << ". They can confirm." << endl;
+        cout << " I was with " << secondPerson << ". They can confirm." << endl;
     }
 }
