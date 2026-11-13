@@ -1,7 +1,7 @@
 #include "CharacterFile.h"
 #include "InterrogationScreen.h"
 #include "SelectionScreen.h"
-// #include "NPCClass_v2.h"
+#include "GameManager_v2.h"
 
 // displays selected character information
 void characterInfo(CharacterFile* character)
@@ -26,7 +26,7 @@ void interrogateOptions()
 }
 
 // gets choice
-void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count)
+void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
     string choice;
     
@@ -44,11 +44,13 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         if (choice == "alibi" || choice == "a")
         {
             character->displayAlibi(characters, count);
+            gm.incrementTalks();
         }
         else if (choice == "motive" || choice == "m")
         {
             character->displayMotive();
             cout << endl;
+            gm.incrementTalks();
         }
         else if (choice == "notes" || choice == "n")
         {
@@ -61,6 +63,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         else if(choice == "accuse" || choice == "a")
         {
             character->accuse();
+            gm.incrementTalks();
         }
         else
         {
@@ -73,11 +76,11 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
     }
 }
 
-void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count)
+void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
     // checks if a character is selected
     if (characters == nullptr) { return; }
     
     characterInfo(character);
-    interrogateChoice(character, characters, count);
+    interrogateChoice(character, characters, count, gm);
 }
