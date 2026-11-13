@@ -72,6 +72,8 @@ void selectionScreen()
     cout << "   OPTION 10:    " << endl;
     cout << "       THE CONDUCTOR" << endl;
     
+    cout << endl;
+    
 }
 
 void selectCharacter(GameManager& gm, int count)
@@ -140,11 +142,6 @@ void selectCharacter(GameManager& gm, int count)
         // and pull it to the interrogation screen
         interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
     }
-    else
-    {
-        gm.setCharacterFiles();
-        interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
-    }
 }
 
 void selectionScreenMain(GameManager& gm)
@@ -159,8 +156,30 @@ void selectionScreenMain(GameManager& gm)
         }
     }
     
-    selectionScreen();
-    selectCharacter(gm, 10);
+    // this whole section is needed because if you choice to go back in interrogation,
+    // it will either close the program (with just a return statement),
+    // or create new character objects and mess up the alibis (if you call selectionScreenMain again)
+    char choice = 'y';
+
+    while (choice == 'y' || choice == 'Y')
+    {
+        selectionScreen();
+        selectCharacter(gm, 10);
+
+        cout << endl;
+        cout << "RETURN TO CHARACTER SELECTION? (YES.): ";
+        cin >> choice;
+        
+        // keeps asking until the user enters y
+        while (choice != 'y' && choice != 'Y')
+        {
+            cout << "INVALID. IT WASN'T A QUESTION. :P" << endl;
+    
+            cout << endl;
+            cout << "RETURN TO CHARACTER SELECTION? (YES.): ";
+            cin >> choice;
+        }
+    }
     
     // // deletes allocated memory
     // for (int i = 0; i < 10; i++)
