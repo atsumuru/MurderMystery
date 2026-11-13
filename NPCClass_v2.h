@@ -11,8 +11,6 @@
 #include <fstream>
 #include <vector>
 
-//#include "NPCClass.cpp"
-
 using namespace std;
 
 class NPC {
@@ -21,26 +19,19 @@ protected:
 	bool isInnocent;
 	int talksToForgiveness;
 	string name;
-	//string motive[9];
-	//string alibi;
-	//string dialogue[5];
-	//int room;
 public:
 	NPC();
     virtual	~NPC();
 	NPC(string name);
 	void kill();
-	void accuse();
-	//string dialogueLine();
 	bool getAlive();
 	bool getInnocent();
 	int getTalksToForgiveness();
 	string getName();
-	//string getMotive(int n);
+	void accuseTalks();
+	void setName(string s);
 	virtual void newChance(); // to make murderer work
 	virtual vector<int> doesKill(NPC* c[10], int me); // to make murderer work
-	//int checkOtherInAlibi(NPC* c[10], int me);
-	//int getRoom();
 };
 
 class Murderer : public NPC {
@@ -49,6 +40,7 @@ protected:
 	bool lastWrongAccuse;
 	int numberToKill;
 public:
+    Murderer();
 	Murderer(string n);
 	~Murderer();
 	void newChance();
