@@ -32,13 +32,13 @@ Professor::Professor()
     *.       -.          :##*#:    ..:=.. .+      
     )";
 
-    catchphrase[0] = "              \"PROFESSOR Catchphrase #1\"";
-    catchphrase[1] = "              \"PROFESSOR Catchphrase #2\"";
-    catchphrase[2] = "              \"PROFESSOR Catchphrase #3\"";
+    catchphrase[0] = "              \"My, what a mystery you have on your hands!\"";
+    catchphrase[1] = "              \"This locomotive really is quite the marvel of modern science.\"";
+    catchphrase[2] = "              \"Do you have a hypothesis yet as to the identity of the murderer?\"";
 
-    motive[0] = "PROFESSOR Positive Motive";
-    motive[1] = "PROFESSOR Neutral Motive";
-    motive[2] = "PROFESSOR Negative Motive";
+    motive[0] = "I feel so badly for poor Madame Rouge- it must be so hard for her to have the Baron die so suddenly.";
+    motive[1] = "Charles and I weren't the closest back in school- I was the better student.";
+    motive[2] = "Charles always was a leech, even back in school. Margaux deserves better than being his second choice.";
 }
 
 void Professor::displayAlibi(CharacterFile* characters[], int count)
