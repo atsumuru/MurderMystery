@@ -21,26 +21,26 @@ protected:
 	bool isInnocent;
 	int talksToForgiveness;
 	string name;
-	string motive[9];
-	string alibi;
-	string dialogue[5];
-	int room;
+	//string motive[9];
+	//string alibi;
+	//string dialogue[5];
+	//int room;
 public:
 	NPC();
     virtual	~NPC();
 	NPC(string name);
 	void kill();
 	void accuse();
-	string dialogueLine();
+	//string dialogueLine();
 	bool getAlive();
 	bool getInnocent();
 	int getTalksToForgiveness();
 	string getName();
-	string getMotive(int n);
+	//string getMotive(int n);
 	virtual void newChance(); // to make murderer work
 	virtual vector<int> doesKill(NPC* c[10], int me); // to make murderer work
-	int checkOtherInAlibi(NPC* c[10], int me);
-	int getRoom();
+	//int checkOtherInAlibi(NPC* c[10], int me);
+	//int getRoom();
 };
 
 class Murderer : public NPC {
