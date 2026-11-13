@@ -2,7 +2,7 @@
 
 Servant::Servant()
 {
-    name = "MR. JACKSON (HANDY) CONROY";
+    name = "                MR. JACKSON (HANDY) CONROY";
     nickName = "Mr. Conroy";
 
     ascii = R"(
@@ -32,9 +32,9 @@ Servant::Servant()
     *        *######%-   .%#*#:  %####%    +      
     )";
 
-    catchphrase[0] = "\"SERVANT Catchphrase #1\"";
-    catchphrase[1] = "\"SERVANT Catchphrase #2\"";
-    catchphrase[2] = "\"SERVANT Catchphrase #3\"";
+    catchphrase[0] = "              \"SERVANT Catchphrase #1\"";
+    catchphrase[1] = "              \"SERVANT Catchphrase #2\"";
+    catchphrase[2] = "              \"SERVANT Catchphrase #3\"";
 
     motive[0] = "SERVANT Positive Motive";
     motive[1] = "SERVANT Neutral Motive";
@@ -44,19 +44,8 @@ Servant::Servant()
 void Servant::displayAlibi(CharacterFile* characters[], int count)
 {
     string room = getRoom();
-    
-    int roomCount = countPeopleInRoom(characters, count, room);
-
-    string secondPerson = "";
-
-    for (int i = 0; i < count; i++)
-    {
-        if (characters[i] != this && characters[i]->getRoom() == room)
-        {
-            secondPerson = characters[i]->getNickName();
-            break;
-        }
-    }
+    int roomCount = countPeopleInRoom(characters, count, room, this);
+    string secondPerson = getSecondPerson(characters, count, room, this);
 
     cout << endl;
     
@@ -91,12 +80,12 @@ void Servant::displayAlibi(CharacterFile* characters[], int count)
     }
     
     //if they end up with someone
-    if (roomCount == 1)
+    if (roomCount == 0)
     {
-        cout << "I was by myself." << endl;
+        cout << " I was by myself." << endl;
     }
-    else if (roomCount == 2)
+    else if (roomCount == 1)
     {
-        cout << "I was with " << secondPerson << ". They can confirm." << endl;
+        cout << " I was with " << secondPerson << ". They can confirm." << endl;
     }
 }
