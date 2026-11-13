@@ -4,11 +4,13 @@
 #include <iostream>
 #include <string>
 
+#include "GameManager_v2.h"
+
 using namespace std;
 
 void instructions();
-void goBack();
+void goBack(GameManager& gm);
 
-void instructionsMain();
+void instructionsMain(GameManager& gm);
 
 #endif
