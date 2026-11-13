@@ -37,18 +37,15 @@ NPC::NPC(string name) : name(name) {
 void NPC::accuse() { 
     talksToForgiveness = 3; 
 }
-string NPC::dialogueLine() {
-	int x = rand() % 5;
-	return dialogue[x];
-}
+
 bool NPC::getAlive() { return isAlive; }
 bool NPC::getInnocent() { return isInnocent; }
 int NPC::getTalksToForgiveness() { return talksToForgiveness; }
 string NPC::getName() { return name; }
-string NPC::getMotive(int n) { return motive[n]; }
+
 void NPC::newChance() {}
 vector<int> NPC::doesKill(NPC* c[10], int me) { return {-1};}
-int NPC::getRoom() { return room; }
+
 void NPC::kill() { isAlive = false; }
 
 Murderer::Murderer(string n) {
