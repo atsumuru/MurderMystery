@@ -1,6 +1,7 @@
 #include "StartScreen.h"
 #include "Prologue.h"
 #include "Instructions.h"
+#include "GameManager_v2.h"
 
 void startScreen()
 {
@@ -26,7 +27,7 @@ void startScreen()
     cout << "   INSTRUCTIONS" << endl;
 }
 
-void gameOptions()
+void gameOptions(GameManager& gm)
 {
     string option;
     
@@ -36,16 +37,16 @@ void gameOptions()
     
     if(option == "start" || option == "s")
     {
-        prologueMain();
+        prologueMain(gm);
     }
     if(option == "instructions" || option == "i")
     {
-        instructionsMain();
+        instructionsMain(gm);
     }
 }
 
-void startScreenMain()
+void startScreenMain(GameManager& gm)
 {
     startScreen();
-    gameOptions();
+    gameOptions(gm);
 }
