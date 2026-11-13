@@ -32,13 +32,13 @@ Servant::Servant()
     *        *######%-   .%#*#:  %####%    +      
     )";
 
-    catchphrase[0] = "              \"SERVANT Catchphrase #1\"";
-    catchphrase[1] = "              \"SERVANT Catchphrase #2\"";
-    catchphrase[2] = "              \"SERVANT Catchphrase #3\"";
+    catchphrase[0] = "              \"Good day, Investigator!\"";
+    catchphrase[1] = "              \"Can I fetch you a cup of tea?\"";
+    catchphrase[2] = "              \"My, this is a right mess we are in!\"";
 
-    motive[0] = "SERVANT Positive Motive";
-    motive[1] = "SERVANT Neutral Motive";
-    motive[2] = "SERVANT Negative Motive";
+    motive[0] = "I have the deepest sympathy for the pain of my Mistress, the Baroness. I would never do anything to hurt her; She has been very good to me.";
+    motive[1] = "Preposterous- it is not in the Buter Code of Conduct to kill their Masters.";
+    motive[2] = "The Baron is... well, was... a vazey, pidgeon-livered hornswoggler, pardoning my language. He did badly by my Mistress, and that is something I cannot forgive."; // https://www.thrillist.com/lifestyle/nation/1800s-insults-slang-from-the-victorian-era, this combination of insults means a cowardly, stupid cheat/fraud
 }
 
 void Servant::displayAlibi(CharacterFile* characters[], int count)
