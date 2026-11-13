@@ -16,6 +16,7 @@ protected:
     
     string catchphrase[3];
     string motive[3];
+    // NPC role;     For when we add the variable proper - Esra P.
 public:
     CharacterFile();
     // "virtual" allows the child objects to be properly destroyed
