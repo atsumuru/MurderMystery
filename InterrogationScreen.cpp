@@ -6,6 +6,7 @@
 // displays selected character information
 void characterInfo(CharacterFile* character)
 {
+    cout << endl;
     if (character == nullptr) { return; }
     
     cout << *character << endl; // Adapted for cout override - Esra P.
@@ -26,13 +27,15 @@ void interrogateOptions()
 }
 
 // gets choice
-void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
+void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count)
 {
     string choice;
     
     // do error checking to take either B or b
     // or defaut to lowercase
     
+    // will tweak selection to only the word so it can access all options
+
     while (choice != "back" && choice != "b")
     {
         // display options
@@ -44,6 +47,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         if (choice == "alibi" || choice == "a")
         {
             character->displayAlibi(characters, count);
+            cout << endl;
             gm.incrementTalks();
         }
         else if (choice == "motive" || choice == "m")
@@ -62,7 +66,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         }
         else if(choice == "accuse" || choice == "a")
         {
-            character->accuse();
+            character->displayAccuse();
             gm.incrementTalks();
         }
         else
@@ -76,11 +80,11 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
     }
 }
 
-void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
+void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count)
 {
     // checks if a character is selected
     if (characters == nullptr) { return; }
     
     characterInfo(character);
-    interrogateChoice(character, characters, count, gm);
+    interrogateChoice(character, characters, count);
 }
