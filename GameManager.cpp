@@ -18,31 +18,58 @@
 #include "Conductor.h"
 #include "EndOfRoundScreen.h"
 
-GameManager::GameManager(int charNum){
+GameManager::GameManager(int charNum)
+{
 	numOfChars = charNum;
-	whichIsMurderer = rand() % 10 + 1;
-	for(int i = 0; i < 10; i++) {
-	    characters[i] = new CharacterFile(this);
-	    characters[i]->gm = this;
-	}
-	for (int i = 0; i < charNum; i++) {
-		if (i == whichIsMurderer) {
-			characters[i]->npc = new Murderer();
-		}
-		else {
-			characters[i]->npc = new NPC();
-		}
-	}
+    whichIsMurderer = -1;
+	
+    // initialize characters
+    for (int i = 0; i < 10; i++)
+    {
+        characters[i] = nullptr;
+    }
+	
+    setCharacterFiles();
+	
 	NPCsLeft = charNum - 1;
 	roundsDone = 0;
 	talksInRound = 0;
 	talksLeft = 0;
+	
 	switch (charNum) {
 	case 10: talksInRound = 4; break;
 	default: talksInRound = 4; break;
 	}
+	
 	talksLeft = talksInRound;
 	isWin = false;
+	
+    // only create characters if a valid number was provided
+    if (charNum > 0 && charNum <= 10)
+    {
+        setCharacterFiles();
+        whichIsMurderer = rand() % charNum;
+
+        // assign NPC to each character
+        for (int i = 0; i < charNum; i++)
+        {
+            characters[i]->gm = this;
+
+            if (i == whichIsMurderer)
+            {
+                characters[i]->npc = new Murderer();
+            }
+            else
+            {
+                characters[i]->npc = new NPC();
+            }
+            characters[i]->npc->setName(characters[i]->getName());
+        }
+
+        NPCsLeft = charNum;
+        talksLeft = talksInRound;
+    }
+	
 }
 GameManager::~GameManager() {
 	for (int i = 0; i < 10; i++) {
@@ -63,6 +90,7 @@ void GameManager::setCharacterFiles() {
     
     assignRoom(characters, 10);
 }
+
 void GameManager::incrementTalks() { talksLeft--; }
 void GameManager::startRound() { talksLeft = talksInRound; }
 void GameManager::checkAlives() {
@@ -74,6 +102,7 @@ void GameManager::checkAlives() {
 	}
 	NPCsLeft = x;
 }
+
 void GameManager::endRound() { 
 	roundsDone++;
 	characters[whichIsMurderer]->npc->newChance();
@@ -89,6 +118,7 @@ void GameManager::endRound() {
 	endOfRoundScreen(roundsDone, c[killed[0]], c[killed[1]]);
 	startRound();
 }
+
 void GameManager::run() {
 	// start round screen
 	// select screen
@@ -103,11 +133,13 @@ void GameManager::run() {
 	cout << endl;
 	endRound();
 }
+
 int GameManager::getRoundsDone() { return roundsDone; }
 int GameManager::getTalksLeft() { return talksLeft; }
 int GameManager::getNPCsLeft() { return NPCsLeft; }
 NPC* GameManager::getNPC(int i) { return characters[i]->npc; }
 bool GameManager::getIsWin() { return isWin;}
+
 void GameManager::winScreen() {
 	cout << R"(
 	    ⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
