@@ -7,6 +7,7 @@ class Doctor : public CharacterFile
 {
 public:
     Doctor();
+    void displayAlibi(CharacterFile* characters[], int count) override;
 };
 
 #endif
