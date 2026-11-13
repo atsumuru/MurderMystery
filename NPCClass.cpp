@@ -30,8 +30,8 @@ NPC::NPC(string name) : name(name) {
 	isInnocent = true;
 	talksToForgiveness = 0;
 	// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
-	room = getRoom();
-	alibi = name + " was in train car " + std::to_string(room);
+	// room = getRoom();
+	// alibi = name + " was in train car " + std::to_string(room);
 }
 
 void NPC::accuse() { 
@@ -57,9 +57,9 @@ Murderer::Murderer(string n) {
 		numberToKill = 0;
 		killTwice = false;
 		this->name = name;
-		room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
-	    alibi = name + " was in train car " + std::to_string(room);
-			// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
+		// room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
+	 	//    alibi = name + " was in train car " + std::to_string(room);
+		// 	// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
 }
 Murderer::~Murderer() {
     delete this;
