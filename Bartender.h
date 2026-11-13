@@ -8,6 +8,7 @@ class Bartender : public CharacterFile
 {
 public:
     Bartender();
+    void displayAlibi(CharacterFile* characters[], int count) override;
 };
 
 #endif
