@@ -6,6 +6,10 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "NPCClass_v2.h"
+
+class GameManager;
+
 using namespace std;
 
 class CharacterFile {
@@ -17,13 +21,18 @@ protected:
     
     string catchphrase[3];
     string motive[3];
+    
 public:
+    NPC* npc;
+    GameManager* gm;
     CharacterFile();
     // "virtual" allows the child objects to be properly destroyed
+    CharacterFile(GameManager* gm);
     virtual ~CharacterFile();
     // Got rid of displayAscii and displayName for cout override - Esra P.
     void displayCatchphrase();
     void displayMotive(); 
+    void accuse();
 
     string getName() const;
     string getNickName() const;
