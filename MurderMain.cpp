@@ -1,5 +1,5 @@
 /*  
-\    Esra p.
+\    Esra P.
 \    11/6/26 [Created Main file] 
 \    The "Main" file for our code
 \    
@@ -21,9 +21,11 @@ using namespace std;
 
 
 int main()
-{
+{  
+	ofstream fout("NotePad.txt");
+	
+	srand(time(NULL));
     int numberOfCharacters = 10;
-    srand(time(NULL));
 	GameManager gm(numberOfCharacters);
 	startScreenMain();
 	// run instructions
@@ -37,6 +39,8 @@ int main()
 	} else {
 	    cout << "You lose." << endl;
 	    // run fail condition
-	}
+	} 
+
+	fout.close();
     return 0;
 }
