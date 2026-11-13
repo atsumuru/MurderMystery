@@ -27,10 +27,13 @@ void CharacterFile::displayCatchphrase()
 }
     
 void CharacterFile::displayMotive()
-{
+{ 
+    ofstream fout("NotePad.txt", ios::app);
     // randomly pull one of the three motives
     int i = rand() % 3;
-    cout << motive[i] << endl;
+    cout << motive[i] << endl; 
+    fout << motive[i] << endl; 
+    fout.close();
 } 
 // Added by Esra
 ostream& operator <<(ostream& os, const CharacterFile& cf) {
