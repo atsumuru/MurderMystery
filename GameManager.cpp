@@ -6,6 +6,17 @@
 
 #include "GameManager_v2.h"
 #include "CharacterFile.h"
+#include "Baroness.h"
+#include "FemmeFatale.h"
+#include "Engineer.h"
+#include "Doctor.h"
+#include "Critic.h"
+#include "Professor.h"
+#include "Servant.h"
+#include "Investigator.h"
+#include "Bartender.h"
+#include "Conductor.h"
+#include "EndOfRoundScreen.h"
 
 GameManager::GameManager(int charNum){
 	numOfChars = charNum;
@@ -38,6 +49,20 @@ GameManager::~GameManager() {
 		delete characters[i];
 	}
 }
+void GameManager::setCharacterFiles() {
+    characters[0] = new Baroness();
+    characters[1] = new FemmeFatale();
+    characters[2] = new Engineer();
+    characters[3] = new Doctor();
+    characters[4] = new Critic();
+    characters[5] = new Professor();
+    characters[6] = new Servant();
+    characters[7] = new Investigator();
+    characters[8] = new Bartender();
+    characters[9] = new Conductor();
+    
+    assignRoom(characters, 10);
+}
 void GameManager::incrementTalks() { talksLeft--; }
 void GameManager::startRound() { talksLeft = talksInRound; }
 void GameManager::checkAlives() {
@@ -53,14 +78,16 @@ void GameManager::endRound() {
 	roundsDone++;
 	characters[whichIsMurderer]->npc->newChance();
 	NPC* c[10];
+	vector<int> killed;
 	for(int i = 0; i < 10; i++) {
 	    c[i] = characters[i]->npc;
 	}
 	if(NPCsLeft > 1) {
-	    characters[whichIsMurderer]->npc->doesKill(c, whichIsMurderer);
+	    killed = characters[whichIsMurderer]->npc->doesKill(c, whichIsMurderer);
 	}
 	checkAlives();
-	// display, end of round screen
+	endOfRoundScreen(roundsDone, c[killed[0]], c[killed[1]]);
+	startRound();
 }
 void GameManager::run() {
 	// start round screen
