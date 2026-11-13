@@ -27,12 +27,12 @@ int main()
 	srand(time(NULL));
     int numberOfCharacters = 10;
 	GameManager gm(numberOfCharacters);
-	startScreenMain();
+	startScreenMain(gm);
 	// run instructions
 	// run prologue
-	while( gm.getIsWin() == false && gm.getNPCsLeft() > 1 ) {
-	    gm.run();
-	}
+// 	while( gm.getIsWin() == false && gm.getNPCsLeft() > 1 ) {
+// 	    gm.run();
+// 	}
 	if( gm.getIsWin() == true ) {
 	    cout << "You win!" << endl;
 	    //run win condition
