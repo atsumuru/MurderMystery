@@ -1,7 +1,4 @@
-/*********************************************
- * Consulted ChatGPT for alibi integration for selectionScreen
- *
- * ******************************************/
+// Consulted ChatGPT for alibi integration for selectionScreen
 
 #include "SelectionScreen.h"
 #include "InterrogationScreen.h"
@@ -74,6 +71,8 @@ void selectionScreen()
     cout << "   OPTION 10:    " << endl;
     cout << "       THE CONDUCTOR" << endl;
     
+    cout << endl;
+    
 }
 
 void selectCharacter(CharacterFile* characters[], int count)
@@ -131,13 +130,15 @@ void selectCharacter(CharacterFile* characters[], int count)
             
         default:
             cout << "   INVALID CHOICE. PLEASE TRY AGAIN." << endl;
-            break;
+            return;
     }
 
     // checks if the character object was created
     // if the pointer isnt nullptr, a character is selected
     if (selectedCharacter != nullptr)
     {
+        cout << endl;
+        
         // used the pointer to access the selected character file,
         // and pull it to the interrogation screen
         interrogationScreenMain(selectedCharacter, characters, count);
@@ -161,10 +162,34 @@ void selectionScreenMain()
     characters[8] = new Bartender();
     characters[9] = new Conductor();
     
+    // assign only once
     assignRoom(characters, 10);
+
+
+    // this whole section is needed because if you choice to go back in interrogation,
+    // it will either close the program (with just a return statement),
+    // or create new character objects and mess up the alibis (if you call selectionScreenMain again)
+    char choice = 'y';
+
+    while (choice == 'y' || choice == 'Y')
+    {
+        selectionScreen();
+        selectCharacter(characters, 10);
+
+        cout << endl;
+        cout << "RETURN TO CHARACTER SELECTION? (YES.): ";
+        cin >> choice;
+        
+        // keeps asking until the user enters y
+        while (choice != 'y' && choice != 'Y')
+        {
+            cout << "INVALID. IT WASN'T A QUESTION. :P" << endl;
     
-    selectionScreen();
-    selectCharacter(characters, 10);
+            cout << endl;
+            cout << "RETURN TO CHARACTER SELECTION? (YES.): ";
+            cin >> choice;
+        }
+    }
     
     // deletes allocated memory
     for (int i = 0; i < 10; i++)
