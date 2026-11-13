@@ -2,20 +2,22 @@
 // 10/28/2026 [created class]
 // Header file for GameManager class
 
-#ifndef GAMEMANAGER_H
-#define GAMEMANAGER_H
+#ifndef GAMEMANAGER_V2_H
+#define GAMEMANAGER_V2_H
 
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "NPCClass.cpp"
 #include "NPCClass_v2.h"
+#include "CharacterFile.h"
 
 using namespace std;
 
+class CharacterFile;
+
 class GameManager {
 protected:
-	NPC* characters[10];
+	CharacterFile* characters[10];
 	int numOfChars;
 	int whichIsMurderer;
 	int NPCsLeft;
