@@ -138,7 +138,7 @@ void selectCharacter(GameManager& gm, int count)
     {
         // used the pointer to access the selected character file,
         // and pull it to the interrogation screen
-        interrogationScreenMain(selectedCharacter, gm.characters, count);
+        interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
     }
     else
     {
