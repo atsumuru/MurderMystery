@@ -3,6 +3,7 @@
 Critic::Critic()
 {
     name = "MR. REGINALD SINCLAIR";
+    nickName = "Mr. Sinclair";
 
     ascii = R"(
                          .+@@@@@@@@++.                 
@@ -52,7 +53,7 @@ Critic::Critic()
             )";
 }
 
-void Conductor::displayAlibi(CharacterFile* characters[], int count)
+void Critic::displayAlibi(CharacterFile* characters[], int count)
 {
     string room = getRoom();
     
