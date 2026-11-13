@@ -26,13 +26,13 @@ public:
     NPC* npc;
     GameManager* gm;
     CharacterFile();
-    // "virtual" allows the child objects to be properly destroyed
     CharacterFile(GameManager* gm);
+    // "virtual" allows the child objects to be properly destroyed
     virtual ~CharacterFile();
     // Got rid of displayAscii and displayName for cout override - Esra P.
     void displayCatchphrase();
     void displayMotive(); 
-    void accuse();
+    void displayAccuse();
 
     string getName() const;
     string getNickName() const;
