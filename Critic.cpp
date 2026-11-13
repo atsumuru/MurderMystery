@@ -2,7 +2,7 @@
 
 Critic::Critic()
 {
-    name = "MR. REGINALD SINCLAIR";
+    name = "                MR. REGINALD SINCLAIR";
     nickName = "Mr. Sinclair";
 
     ascii = R"(
@@ -33,9 +33,9 @@ Critic::Critic()
        @@##%#%%%%%@%##++++=@::=++-  %-=%%#%%%%%%@@     
     )";
 
-    catchphrase[0] = "\"Such drab furnishings.\"";
-    catchphrase[1] = "\"This carpet is absolutely dreadful\"";
-    catchphrase[2] = "\"Yes, what is it?\"";
+    catchphrase[0] = "              \"Such drab furnishings.\"";
+    catchphrase[1] = "              \"This carpet is absolutely dreadful\"";
+    catchphrase[2] = "              \"Yes, what is it?\"";
 
     motive[0] = R"(
             "What use has I for murder? The only death I implore is the death of businesses after
@@ -56,19 +56,8 @@ Critic::Critic()
 void Critic::displayAlibi(CharacterFile* characters[], int count)
 {
     string room = getRoom();
-    
-    int roomCount = countPeopleInRoom(characters, count, room);
-
-    string secondPerson = "";
-
-    for (int i = 0; i < count; i++)
-    {
-        if (characters[i] != this && characters[i]->getRoom() == room)
-        {
-            secondPerson = characters[i]->getNickName();
-            break;
-        }
-    }
+    int roomCount = countPeopleInRoom(characters, count, room, this);
+    string secondPerson = getSecondPerson(characters, count, room, this);
 
     cout << endl;
     
@@ -103,12 +92,12 @@ void Critic::displayAlibi(CharacterFile* characters[], int count)
     }
     
     //if they end up with someone
-    if (roomCount == 1)
+    if (roomCount == 0)
     {
-        cout << "I was by myself." << endl;
+        cout << " I was by myself." << endl;
     }
-    else if (roomCount == 2)
+    else if (roomCount == 1)
     {
-        cout << "I was with " << secondPerson << ". They can confirm." << endl;
+        cout << " I was with " << secondPerson << ". They can confirm." << endl;
     }
 }
