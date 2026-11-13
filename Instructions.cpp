@@ -53,7 +53,7 @@ void goBack()
     }
     else
     {
-        prologueMain();
+        instructionsMain();
     }
     
 }
