@@ -13,7 +13,7 @@
 #include <vector>
 
 #include "NPCClass_v2.h"
-//#include "Alibi.cpp"
+#include "GameManager_v2.h"
 
 using namespace std;
 
@@ -34,19 +34,26 @@ NPC::NPC(string name) : name(name) {
 	// alibi = name + " was in train car " + std::to_string(room);
 }
 
-void NPC::accuse() { 
-    talksToForgiveness = 3; 
-}
-
 bool NPC::getAlive() { return isAlive; }
 bool NPC::getInnocent() { return isInnocent; }
 int NPC::getTalksToForgiveness() { return talksToForgiveness; }
 string NPC::getName() { return name; }
-
+void NPC::accuseTalks() { talksToForgiveness = 3;}
+void NPC::setName(string s) { name = s; }
 void NPC::newChance() {}
 vector<int> NPC::doesKill(NPC* c[10], int me) { return {-1};}
 
 void NPC::kill() { isAlive = false; }
+
+Murderer::Murderer() {
+    name = "name";
+    isAlive = true;
+    talksToForgiveness = 0;
+    isInnocent = false;
+	lastWrongAccuse = false;
+	numberToKill = 0;
+	killTwice = false;   
+}
 
 Murderer::Murderer(string n) {
 		name = n;
@@ -57,9 +64,6 @@ Murderer::Murderer(string n) {
 		numberToKill = 0;
 		killTwice = false;
 		this->name = name;
-		// room = rand() % 6 + 1; // temporary, will currently lead to 2+ in a room. This will not be the case with file io :)
-	 	//    alibi = name + " was in train car " + std::to_string(room);
-		// 	// insert here later: file input/output to initialize motive, alibi, and dialogue based on file name
 }
 Murderer::~Murderer() {
     delete this;
