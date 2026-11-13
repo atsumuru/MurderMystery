@@ -1,7 +1,4 @@
-/*********************************************
- * Consulted ChatGPT for alibi integration for selectionScreen
- *
- * ******************************************/
+// Consulted ChatGPT for alibi integration for selectionScreen
 
 #include "SelectionScreen.h"
 #include "InterrogationScreen.h"
@@ -141,15 +138,15 @@ void selectCharacter(GameManager& gm, int count)
     {
         // used the pointer to access the selected character file,
         // and pull it to the interrogation screen
-        interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
-    } else {
+        interrogationScreenMain(selectedCharacter, gm.characters, count);
+    }
+    else
+    {
         gm.setCharacterFiles();
         interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
     }
 }
 
-// *** specifically this portions to pull the character information
-// also helps pull characters for alibi person selection
 void selectionScreenMain(GameManager& gm)
 {
     for(int i = 0; i < 10; i++) {
