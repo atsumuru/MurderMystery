@@ -1,8 +1,7 @@
 #ifndef CHARACTERFILE_H
 #define CHARACTERFILE_H
 
-#include <iostream> 
-#include <fstream>
+#include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
@@ -13,10 +12,11 @@ class CharacterFile {
 protected:
     string ascii; 
     string name;
+    string nickName;
+    string room;
     
     string catchphrase[3];
     string motive[3];
-    // NPC role;     For when we add the variable proper - Esra P.
 public:
     CharacterFile();
     // "virtual" allows the child objects to be properly destroyed
@@ -25,6 +25,12 @@ public:
     void displayCatchphrase();
     void displayMotive(); 
 
+    string getName() const;
+    string getNickName() const;
+    void setRoom(string newRoom);
+    string getRoom() const;
+    virtual void displayAlibi(CharacterFile* characters[], int count);
+    
     friend ostream& operator <<(ostream& os, const CharacterFile&); // Prototype for override operator - Esra P.
 };
 
