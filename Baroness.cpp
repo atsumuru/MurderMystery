@@ -83,7 +83,7 @@ void Baroness::displayAlibi(CharacterFile* characters[], int count)
     else if (roomCount == 1)
     {
         cout << " I was with " << secondPerson << ". They can confirm." << endl;
-        fout << " Barones was with " << secondPerson << ". Or so they say." << endl;
+        fout << " Baroness was with " << secondPerson << ". Or so they say." << endl;
     } 
     fout.close();
 }
