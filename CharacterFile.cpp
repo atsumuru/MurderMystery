@@ -6,6 +6,7 @@ CharacterFile::CharacterFile()
     ascii = "ASCII PLACEHOLDER";
     
     name = "HONORIFIC FIRST LAST";
+    nickName = "HONORIFIC LAST";
     
     catchphrase[0] = "\"CHARACTER Catchphrase #1\"";
     catchphrase[1] = "\"CHARACTER Catchphrase #2\"";
@@ -27,16 +28,38 @@ void CharacterFile::displayCatchphrase()
 }
     
 void CharacterFile::displayMotive()
-{ 
-    ofstream fout("NotePad.txt", ios::app);
+{
     // randomly pull one of the three motives
     int i = rand() % 3;
-    cout << motive[i] << endl; 
-    fout << endl << motive[i] << endl; 
-    fout.close();
+    cout << motive[i] << endl;
 } 
 // Added by Esra
 ostream& operator <<(ostream& os, const CharacterFile& cf) {
     os << cf.name << endl << cf.ascii << endl; 
     return os;
+}
+
+string CharacterFile::getName() const
+{
+    return name;
+}
+
+string CharacterFile::getNickName() const
+{
+    return nickName;
+}
+
+void CharacterFile::setRoom(string newRoom)
+{
+    room = newRoom;
+}
+
+string CharacterFile::getRoom() const
+{
+    return room;
+}
+
+void CharacterFile::displayAlibi(CharacterFile* characters[], int count)
+{
+    cout << "I was in the " << room << "." << endl;
 }
