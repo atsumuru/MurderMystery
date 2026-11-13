@@ -2,7 +2,7 @@
 
 Engineer::Engineer()
 {
-    name = "MS. CASSIE (CASSANDRA) HARDWELL";
+    name = "                MS. CASSIE (CASSANDRA) HARDWELL";
     nickName = "Ms. Hardwell";
 
     ascii = R"(
@@ -32,9 +32,9 @@ Engineer::Engineer()
     +        :%#: %#************##. %%=    =      
     )";
 
-    catchphrase[0] = "\"ENGINEER Catchphrase #1\"";
-    catchphrase[1] = "\"ENGINEER Catchphrase #2\"";
-    catchphrase[2] = "\"ENGINEER Catchphrase #3\"";
+    catchphrase[0] = "              \"ENGINEER Catchphrase #1\"";
+    catchphrase[1] = "              \"ENGINEER Catchphrase #2\"";
+    catchphrase[2] = "              \"ENGINEER Catchphrase #3\"";
 
     motive[0] = "ENGINEER Positive Motive";
     motive[1] = "ENGINEER Neutral Motive";
@@ -44,19 +44,8 @@ Engineer::Engineer()
 void Engineer::displayAlibi(CharacterFile* characters[], int count)
 {
     string room = getRoom();
-    
-    int roomCount = countPeopleInRoom(characters, count, room);
-
-    string secondPerson = "";
-
-    for (int i = 0; i < count; i++)
-    {
-        if (characters[i] != this && characters[i]->getRoom() == room)
-        {
-            secondPerson = characters[i]->getNickName();
-            break;
-        }
-    }
+    int roomCount = countPeopleInRoom(characters, count, room, this);
+    string secondPerson = getSecondPerson(characters, count, room, this);
 
     cout << endl;
     
@@ -91,12 +80,12 @@ void Engineer::displayAlibi(CharacterFile* characters[], int count)
     }
     
     //if they end up with someone
-    if (roomCount == 1)
+    if (roomCount == 0)
     {
-        cout << "I was by myself." << endl;
+        cout << " I was by myself." << endl;
     }
-    else if (roomCount == 2)
+    else if (roomCount == 1)
     {
-        cout << "I was with " << secondPerson << ". They can confirm." << endl;
+        cout << " I was with " << secondPerson << ". They can confirm." << endl;
     }
 }
