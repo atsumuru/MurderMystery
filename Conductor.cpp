@@ -34,11 +34,22 @@ Conductor::Conductor()
     %#*#**####*#%#*##%     .=   %#*#%%####%#      
     )";
 
-    catchphrase[0] = "\"CONDUCTOR Catchphrase #1\"";
-    catchphrase[1] = "\"CONDUCTOR Catchphrase #2\"";
-    catchphrase[2] = "\"CONDUCTOR Catchphrase #3\"";
+    catchphrase[0] = "\"Hmm.\"";
+    catchphrase[1] = "\"What?\"";
+    catchphrase[2] = "\"I hate my job...\"";
 
-    motive[0] = "CONDUCTOR Positive Motive";
-    motive[1] = "CONDUCTOR Neutral Motive";
-    motive[2] = "CONDUCTOR Negative Motive";
+    motive[0] = R"(
+            "I don't want to be here. Not just because of the murder, but because I need a break from smelling
+             coal and soot. The only reason I came in the first place was that Mr. Hudson promised three times 
+             my usual wage. Now, look at him."
+            )";
+    motive[1] = R"(
+            "I don't want to be here. I was supposed to be on my one layoff a year, but then Smith got sick
+             and took his layoff before me. Now, I have to work his shift. This is a bunch of bollocks."
+            )";
+    motive[2] = R"(
+            "I don't want to be here. I wasn't supposed to come in today. I've worked for 14 hours straight,
+             and yet, Mr. Hudson told me to drive this damned train. Now, the man's dead! Who's going to 
+             pay me now!"
+            )";
 }
