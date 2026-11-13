@@ -53,7 +53,7 @@ Bartender::Bartender()
         )";
 }
 
-void Bartendeer::displayAlibi(CharacterFile* characters[], int count)
+void Bartender::displayAlibi(CharacterFile* characters[], int count)
 {
     string room = getRoom();
     
