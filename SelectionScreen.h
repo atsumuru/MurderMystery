@@ -5,11 +5,12 @@
 #include <string>
 
 #include "CharacterFile.h"
+#include "GameManager_v2.h"
 
 using namespace std;
 
 void selectionScreen();
-void selectCharacter(CharacterFile* characters[], int count);
-void selectionScreenMain();
+void selectCharacter(GameManager& gm, int count);
+void selectionScreenMain(GameManager& gm);
 
 #endif
