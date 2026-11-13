@@ -17,10 +17,11 @@ void interrogateOptions()
 {
     cout << endl;
     
-    cout << "   ALIBI" << endl;
-    cout << "   MOTIVE" << endl;
-    cout << "   NOTES" << endl;
-    cout << "   BACK" << endl;
+    cout << "ALIBI" << endl;
+    cout << "MOTIVE" << endl;
+    cout << "NOTES" << endl;
+    cout << "BACK" << endl;
+    cout << "ACCUSE" << endl;
     cout << endl;
 }
 
@@ -34,18 +35,11 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
     
     while (choice != "back" && choice != "b")
     {
-        
         // display options
         interrogateOptions();
         
         cout << "WHAT WOULD YOU LIKE TO DO? ";
         cin >> choice;
-        
-        // convert choice to lowercase
-        for (int i = 0; i < choice.length(); i++)
-        {
-            choice[i] = tolower(choice[i]);
-        }
         
         if (choice == "alibi" || choice == "a")
         {
@@ -62,13 +56,16 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         }
         else if (choice == "back" || choice == "b")
         {
-            // go back to selectionScreen
             return;
+        }
+        else if(choice == "accuse" || choice == "a")
+        {
+            character->accuse();
         }
         else
         {
             cout << "INVALID CHOICE. TRY AGAIN." << endl;
-            return;
+            cout << endl;
         }
         
         // after making choice, clear screen, then replace (mayhaps)
