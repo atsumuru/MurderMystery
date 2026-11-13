@@ -32,7 +32,7 @@ void CharacterFile::displayMotive()
     // randomly pull one of the three motives
     int i = rand() % 3;
     cout << motive[i] << endl; 
-    fout << motive[i] << endl; 
+    fout << endl << motive[i] << endl; 
     fout.close();
 } 
 // Added by Esra
