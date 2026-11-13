@@ -1,7 +1,8 @@
 #ifndef CHARACTERFILE_H
 #define CHARACTERFILE_H
 
-#include <iostream>
+#include <iostream> 
+#include <fstream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
