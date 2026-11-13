@@ -1,5 +1,6 @@
 #include "Prologue.h"
 #include "SelectionScreen.h"
+#include "GameManager_v2.h"
 
 // created 11/9/2026
 // by Payton Phillips
@@ -36,7 +37,7 @@ void prologue()
     cout << endl;
 }
 
-void gameContinue()
+void gameContinue(GameManager& gm)
 {
     string choice;
     
@@ -45,9 +46,10 @@ void gameContinue()
     
     if(choice == "yes" || choice == "y")
     {
-        selectionScreenMain();
+        gm.startRound();
+        selectionScreenMain(gm);
     }
-    else if (choice == "no" || choice == "n")
+    else
     {
         cout << "   How dare you." << endl;
         cout << endl;
@@ -55,8 +57,8 @@ void gameContinue()
     }
 }
 
-void prologueMain()
+void prologueMain(GameManager& gm)
 {
     prologue();
-    gameContinue();
+    gameContinue(gm);
 }
