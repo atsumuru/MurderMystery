@@ -1,5 +1,6 @@
 #include "Prologue.h"
 #include "SelectionScreen.h"
+#include "GameManager_v2.h"
 
 // created 11/9/2026
 // by Payton Phillips
@@ -15,28 +16,12 @@
 
 void prologue()
 {
-    
-    cout << R"(
-            Mr. Charles Hudson was a wealthy railway tycoon.
-            While immoral, he did love to show off.
-            In September 1872, he revealed the fastest
-            train ever created to the public
-            and invited many other wealthy/famous figures to ride
-            in style across the new transcontinental railway.
-            However, after the first milestone, a scream
-            rings out through the train.
-            The Body of Charles Hudson was found…
-        
-            Murdered. 
-            
-            Now it's your turn to figure out Whodunit
-            before the murderer gets away with it.
-        )";
-        
-    cout << endl;
+    cout << "   Here is the prologue." << endl;
+    cout << "   This one guy died." << endl;
+    cout << "   Find out who don' it." << endl;
 }
 
-void gameContinue()
+void gameContinue(GameManager& gm)
 {
     string choice;
     
@@ -45,9 +30,10 @@ void gameContinue()
     
     if(choice == "yes" || choice == "y")
     {
-        selectionScreenMain();
+        gm.startRound();
+        selectionScreenMain(gm);
     }
-    else if (choice == "no" || choice == "n")
+    else
     {
         cout << "   How dare you." << endl;
         cout << endl;
@@ -55,8 +41,8 @@ void gameContinue()
     }
 }
 
-void prologueMain()
+void prologueMain(GameManager& gm)
 {
     prologue();
-    gameContinue();
+    gameContinue(gm);
 }
