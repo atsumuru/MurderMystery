@@ -27,7 +27,7 @@ void interrogateOptions()
 }
 
 // gets choice
-void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count)
+void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
     string choice;
     
@@ -80,11 +80,11 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
     }
 }
 
-void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count)
+void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
     // checks if a character is selected
     if (characters == nullptr) { return; }
     
     characterInfo(character);
-    interrogateChoice(character, characters, count);
+    interrogateChoice(character, characters, count, gm);
 }
