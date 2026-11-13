@@ -72,10 +72,12 @@ void interrogateChoice(CharacterFile* character)
 }
 
 void interrogationScreenMain(CharacterFile* character)
-{
+{ 
+    ofstream fout("NotePad.txt", ios::app);
     // checks if a character is selected
     if (character == nullptr) { return; }
     
     characterInfo(character);
-    interrogateChoice(character);
+    interrogateChoice(character); 
+    fout.close();
 }
