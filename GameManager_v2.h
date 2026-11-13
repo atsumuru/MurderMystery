@@ -17,7 +17,6 @@ class CharacterFile;
 
 class GameManager {
 protected:
-	CharacterFile* characters[10];
 	int numOfChars;
 	int whichIsMurderer;
 	int NPCsLeft;
@@ -26,9 +25,11 @@ protected:
 	int talksLeft;
 	bool isWin;
 public:
+    CharacterFile* characters[10];
 	GameManager(int charNum);
 	~GameManager();
 	void incrementTalks();
+	void setCharacterFiles();
 	void startRound();
 	void checkAlives();
 	void endRound();
