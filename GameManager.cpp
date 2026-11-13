@@ -5,23 +5,22 @@
 #include <fstream>
 
 #include "GameManager_v2.h"
+#include "CharacterFile.h"
 
-inline GameManager::GameManager(int charNum){
+GameManager::GameManager(int charNum){
 	numOfChars = charNum;
-	// put file io to import the array of names and files
-	string names[10] = { "Anna", "Bobby", "Cora", "Dan", "Eve", "Fred", "George", "Henry", "Isabelle", "Jake" };
-	string files[10] = { "Anna", "Bobby", "Cora", "Dan", "Eve", "Fred", "George", "Henry", "Isabelle", "Jake" };
 	whichIsMurderer = rand() % 10 + 1;
+	for(int i = 0; i < 10; i++) {
+	    characters[i] = new CharacterFile(this);
+	    characters[i]->gm = this;
+	}
 	for (int i = 0; i < charNum; i++) {
 		if (i == whichIsMurderer) {
-			characters[i] = new Murderer(names[i]);
+			characters[i]->npc = new Murderer();
 		}
 		else {
-			characters[i] = new NPC(names[i]);
+			characters[i]->npc = new NPC();
 		}
-	}
-	for (int i = 0; i < 10; i++) {
-	    characters[i]->setAlibi(characters, i);
 	}
 	NPCsLeft = charNum - 1;
 	roundsDone = 0;
@@ -34,32 +33,36 @@ inline GameManager::GameManager(int charNum){
 	talksLeft = talksInRound;
 	isWin = false;
 }
-inline GameManager::~GameManager() {
+GameManager::~GameManager() {
 	for (int i = 0; i < 10; i++) {
 		delete characters[i];
 	}
 }
-void inline GameManager::incrementTalks() { talksLeft--; }
-void inline GameManager::startRound() { talksLeft = talksInRound; }
-void inline GameManager::checkAlives() {
+void GameManager::incrementTalks() { talksLeft--; }
+void GameManager::startRound() { talksLeft = talksInRound; }
+void GameManager::checkAlives() {
 	int x = 0;
 	for (int i = 0; i < numOfChars; i++) {
-		if (characters[i]->getAlive()) {
+		if (characters[i]->npc->getAlive()) {
 			x++;
 		}
 	}
 	NPCsLeft = x;
 }
-void inline GameManager::endRound() { 
+void GameManager::endRound() { 
 	roundsDone++;
-	characters[whichIsMurderer]->newChance();
+	characters[whichIsMurderer]->npc->newChance();
+	NPC* c[10];
+	for(int i = 0; i < 10; i++) {
+	    c[i] = characters[i]->npc;
+	}
 	if(NPCsLeft > 1) {
-	    characters[whichIsMurderer]->doesKill(characters, whichIsMurderer);
+	    characters[whichIsMurderer]->npc->doesKill(c, whichIsMurderer);
 	}
 	checkAlives();
 	// display, end of round screen
 }
-void inline GameManager::run() {
+void GameManager::run() {
 	// start round screen
 	// select screen
 	startRound();
@@ -73,12 +76,12 @@ void inline GameManager::run() {
 	cout << endl;
 	endRound();
 }
-int inline GameManager::getRoundsDone() { return roundsDone; }
-int inline GameManager::getTalksLeft() { return talksLeft; }
-int inline GameManager::getNPCsLeft() { return NPCsLeft; }
-inline NPC* GameManager::getNPC(int i) { return characters[i]; }
-bool inline GameManager::getIsWin() { return isWin;}
-void inline GameManager::winScreen() {
+int GameManager::getRoundsDone() { return roundsDone; }
+int GameManager::getTalksLeft() { return talksLeft; }
+int GameManager::getNPCsLeft() { return NPCsLeft; }
+NPC* GameManager::getNPC(int i) { return characters[i]->npc; }
+bool GameManager::getIsWin() { return isWin;}
+void GameManager::winScreen() {
 	cout << R"(
 	    ⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⣴⠾⠛⢉⣹⣧⣤⣤⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -114,7 +117,7 @@ void inline GameManager::winScreen() {
 	cout << "The real murderer was " << characters[whichIsMurderer]->getName() << "." << endl;
 };
  
-void inline GameManager::loseScreen() {
+void GameManager::loseScreen() {
 	cout << R"(
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⢤⣠⢷⣝⢦⠀⠀⠀⠀
