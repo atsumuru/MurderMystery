@@ -38,13 +38,13 @@ Critic::Critic()
     catchphrase[2] = "              \"Yes, what is it?\"";
 
     motive[0] = R"(
-            "What use has I for murder? The only death I implore is the death of businesses after
+            "What use have I for murder? The only death I implore is the death of businesses after
              my reviews. Could you imagine: Mr. Hudson hiring some amateur? Ridiculous."
             )";
     motive[1] = R"(
-            "Me? A murderer? Don't be absurded. The only reason I am even here is that Mr. Hudson
+            "Me? A murderer? Don't be absurd. The only reason I am even here is that Mr. Hudson
              had almost made the abhorrent mistake of hiring some random reviewer who probably couldn't
-             tell their mahagony from their walnut." 
+             tell their mahogany from their walnut." 
             )";
     motive[2] = R"(
             "Mr. Hudson may have been a tasteless ne'er-do-well, but even a man of his caliber should 
