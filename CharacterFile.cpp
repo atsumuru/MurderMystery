@@ -43,6 +43,13 @@ CharacterFile::~CharacterFile() {}
 // Got rid of displayName and Ascii - Esra P.
 void CharacterFile::displayCatchphrase()
 {
+    // checks if character is dead or alive
+    if (npc->getAlive() == false)
+    {
+        cout << "..." << endl;
+        return;
+    }
+    
     // randomly pull one of the three catchphrases
     int i = rand() % 3;
     cout << catchphrase[i] << endl;
@@ -50,6 +57,13 @@ void CharacterFile::displayCatchphrase()
     
 void CharacterFile::displayMotive()
 {
+    // checks if character is dead or alive
+    if (npc->getAlive() == false)
+    {
+        cout << "..." << endl;
+        return;
+    }
+    
     // randomly pull one of the three motives
     int i = rand() % 3;
     cout << motive[i] << endl;
@@ -82,11 +96,39 @@ string CharacterFile::getRoom() const
 
 void CharacterFile::displayAlibi(CharacterFile* characters[], int count)
 {
-    cout << "I was in the " << room << "." << endl;
+    // checks if character is dead or alive
+    if (npc->getAlive() == false)
+    {
+        cout << "..." << endl;
+        return;
+    }
+    
+    // independent for each character
+    // was mainly hear for testing and integration
 }
 
-void CharacterFile::accuse() {
-    cout << "\"How dare you! Of course I am not the murderer.\"" << endl << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
+void CharacterFile::displayAccuse() {
+    
+    // checks if character is dead or alive
+    if (npc->getAlive() == false)
+    {
+        cout << name << " IS DEAD." << endl;
+        cout << "THEY CANNOT RESPOND TO YOUR ACCUSATION." << endl << endl;
+        return;
+    }
+    
+    // checks if you didn't already falsely accuse them
+    if (npc->getTalksToForgiveness() != 0)
+    {
+        cout << "YOU FALSELY ACCUSED THIS PERSON. THEY WON'T TALK TO YOU RIGHT NOW." << endl;
+        return;
+    }
+    
+    cout << endl;
+    cout << "\"How dare you! Of course I am not the murderer.\"" << endl << endl << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
     npc->accuseTalks();
     gm->incrementTalks();
+    
+    // if innocent, go back to selectionScreen
+    // need to test
 }
