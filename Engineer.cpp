@@ -32,13 +32,26 @@ Engineer::Engineer()
     +        :%#: %#************##. %%=    =      
     )";
 
-    catchphrase[0] = "              \"ENGINEER Catchphrase #1\"";
-    catchphrase[1] = "              \"ENGINEER Catchphrase #2\"";
-    catchphrase[2] = "              \"ENGINEER Catchphrase #3\"";
+    catchphrase[0] = "              \"Hey-ya!\"";
+    catchphrase[1] = "              \"This engine's purring something fierce.\"";
+    catchphrase[2] = "              \"Can I help ya?\"";
 
-    motive[0] = "ENGINEER Positive Motive";
-    motive[1] = "ENGINEER Neutral Motive";
-    motive[2] = "ENGINEER Negative Motive";
+    motive[0] = R"(
+            "I was sent by High-Top Rail Co. to serve as Mistah Hudson's train mechanic! I 
+             was reals excited to work on this beauty me and they boys help make, though
+             I'll say, Mistah Hudson kinda gave me bad feels."
+            )";
+    motive[1] = R"(
+            "I don't wanna gets in trouble, so keep this between us, k? Mistah Hudson was 
+             a real scurvy fella. He had me and the boys make this here train for 'im, 
+             but then he cut us our pay. It was downright dishonest!"
+            )";
+    motive[2] = R"(
+            "My momma always taught me to stand up for myself, and I was so scared for the 
+             longest time to stand up to wealthy fellas. But, what Mistah Hudson done is 
+             too unfair. He treated us as free labours to make this train. I may not 
+             know much, but I knows that this was prevented by Mistah Lincoln."
+            )";
 }
 
 void Engineer::displayAlibi(CharacterFile* characters[], int count)
