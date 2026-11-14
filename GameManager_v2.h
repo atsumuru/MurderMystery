@@ -39,6 +39,7 @@ public:
 	int getNPCsLeft();
 	NPC* getNPC(int i);
 	bool getIsWin();
+    void setIsWin(bool value); //
 	void winScreen();
 	void loseScreen();
 };
