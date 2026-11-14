@@ -1,33 +1,49 @@
 #include "Alibi.h"
 
-string rooms[6] =
+string rooms[7] =
 {
     "Engine Car",
     "Baggage Car",
     "Dining Car",
     "Parlor Car",
     "Observation Car",
-    "Compartment Coach"
+    "Compartment Coach",
+    "Murder Room"
 };
+
+void murdererAssignNewRoom(CharacterFile* characters[], int count, int me) {
+    cout << "murderer is reassigning alibi" << endl;
+    int randomRoom = rand() % 6;
+    // while (countPeopleInRoom(characters, count, rooms[randomRoom], characters[me]) >= 2)
+    // {
+    //     randomRoom = rand() % 6;
+    // }
+    characters[me]->setRoom(rooms[randomRoom]);
+    cout << "new room should be " << rooms[randomRoom] << endl;
+}
 
 // assign room location
 void assignRoom(CharacterFile* characters[], int count)
 {
     // start every room at 0
-    int roomCount[6] = {0};
+    int roomCount[7] = {0};
     
     // goes through character array
     for(int i = 0; i < count; i++)
     {
         int randomRoom = rand() % 6;
-        
-        // find a room with fewer than two characters
-        while (roomCount[randomRoom] >= 2)
-        {
+        if(characters[i]->npc->getInnocent() == true) {
+            while (roomCount[randomRoom] >= 2)
+            {
             randomRoom = rand() % 6;
+            }
+        } else {
+            randomRoom = 6;
         }
+        // find a room with fewer than two characters
         
         // assigns characters a room
+       
         characters[i]->setRoom(rooms[randomRoom]);
         roomCount[randomRoom]++;
     }
@@ -41,7 +57,7 @@ int countPeopleInRoom(CharacterFile* characters[], int count, string room, Chara
     {
         // checks another character exists and is assigned in the same room
         // does not include itself
-        if (characters[i] != nullptr && characters[i] != currentCharacter && characters[i]->getRoom() == room)
+        if (characters[i] != nullptr && characters[i] != currentCharacter && characters[i]->npc->getInnocent() && characters[i]->getRoom() == room)
         {
             roomCount++;
         }
@@ -59,7 +75,7 @@ string getSecondPerson(CharacterFile* characters[], int count, string room, Char
 {
     for (int i = 0; i < count; i++)
     {
-        if (characters[i] != nullptr && characters[i] != currentCharacter && characters[i]->getRoom() == room)
+        if (characters[i] != nullptr && characters[i] != currentCharacter && characters[i]->npc->getInnocent() == true && characters[i]->getRoom() == room)
         {
             return characters[i]->getNickName();
         }
