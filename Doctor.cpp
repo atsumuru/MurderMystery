@@ -52,7 +52,7 @@ void Doctor::displayAlibi(CharacterFile* characters[], int count)
 
     cout << endl;
     // dialogue for each room
-    if(room != null)
+    if(!room.empty())
     {
         cout << "I was in the " << room << ".";
         fout << "Doctor was in the "<< room << ".";
