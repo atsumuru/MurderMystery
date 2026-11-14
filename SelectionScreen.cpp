@@ -4,6 +4,7 @@
 #include "InterrogationScreen.h"
 #include "Alibi.h"
 #include "GameManager_v2.h"
+#include "ClearScreen.h"
 
 #include "CharacterFile.h"
 #include "Baroness.h"
@@ -19,6 +20,7 @@
 
 void selectionScreen()
 {
+    clearScreen();
     cout << endl;
     cout << "   WHO WILL YOU INTERROGATE?" << endl;
     
@@ -167,7 +169,7 @@ void selectionScreenMain(GameManager& gm)
     // or create new character objects and mess up the alibis (if you call selectionScreenMain again)
     char choice = 'y';
 
-    while (choice == 'y' || choice == 'Y')
+    while ((choice == 'y' || choice == 'Y') && gm.getIsWin() == false)
     {
         selectionScreen();
         selectCharacter(gm, 10);
