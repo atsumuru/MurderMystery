@@ -42,7 +42,7 @@ protected:
 public:
     Murderer();
 	Murderer(string n);
-	~Murderer();
+	~Murderer() override;
 	void newChance();
 	vector<int> doesKill(NPC* n[10], int me);
 	bool getInnocent();
