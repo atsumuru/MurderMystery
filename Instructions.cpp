@@ -1,9 +1,11 @@
 #include "Instructions.h"
 #include "StartScreen.h"
 #include "GameManager_v2.h"
+#include "ClearScreen.h"
 
 void instructions()
 {
+    clearScreen();
     cout << R"(
     Welcome to THE MURDER OF CHARLES HUDSON!
     
