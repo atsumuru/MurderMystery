@@ -22,9 +22,9 @@ NPC::NPC() {
 		isInnocent = true;
 		talksToForgiveness = 0;
 }
-NPC::~NPC() {
-    delete this;
-}
+
+NPC::~NPC() {}
+
 NPC::NPC(string name) : name(name) {
 	isAlive = true;
 	isInnocent = true;
@@ -65,9 +65,8 @@ Murderer::Murderer(string n) {
 		killTwice = false;
 		this->name = name;
 }
-Murderer::~Murderer() {
-    delete this;
-}
+Murderer::~Murderer() {}
+
 void Murderer::newChance() { // calculate chance of second kill, should be executed after last talk of the round but before round end
 		int chanceToKillTwice = rand() % 100 + 1;
 		int bar;
