@@ -42,6 +42,7 @@ public:
     void setIsWin(bool value); //
 	void winScreen();
 	void loseScreen();
+	int getWhichIsMurderer();
 };
 
 #endif
