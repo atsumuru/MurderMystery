@@ -146,15 +146,15 @@ void selectCharacter(GameManager& gm, int count)
 
 void selectionScreenMain(GameManager& gm)
 {
-    for(int i = 0; i < 10; i++) {
-        try{
-        gm.characters[i]->npc->setName(gm.characters[i]->getName());
-        throw(gm.characters[i]->getName());
-        }
-        catch(string n) {
-            cout << "Error with " << n << endl;
-        }
-    }
+    // for(int i = 0; i < 10; i++) {
+    //     try{
+    //     gm.characters[i]->npc->setName(gm.characters[i]->getName());
+    //     throw(gm.characters[i]->getName());
+    //     }
+    //     catch(string n) {
+    //         cout << "Error with " << n << endl;
+    //     }
+    // }
     
     // this whole section is needed because if you choice to go back in interrogation,
     // it will either close the program (with just a return statement),
