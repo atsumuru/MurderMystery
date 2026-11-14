@@ -40,11 +40,7 @@ CharacterFile::CharacterFile(GameManager* gm) {
 }
 
 // runs when CharacterFile is destroyed
-CharacterFile::~CharacterFile()
-{
-    delete npc;
-}
-
+CharacterFile::~CharacterFile() {}
 // Got rid of displayName and Ascii - Esra P.
 void CharacterFile::displayCatchphrase()
 {
@@ -172,44 +168,25 @@ void CharacterFile::displayAlibi(CharacterFile* characters[], int count)
     }
 }
 
-bool CharacterFile::displayAccuse() {
+void CharacterFile::displayAccuse() {
     
     // checks if character is dead or alive
     if (npc->getAlive() == false)
     {
         cout << name << " IS DEAD." << endl;
         cout << "THEY CANNOT RESPOND TO YOUR ACCUSATION." << endl << endl;
-        return false;
+        return;
     }
     
     // checks if you didn't already falsely accuse them
     if (npc->getTalksToForgiveness() != 0)
     {
         cout << "YOU FALSELY ACCUSED THIS PERSON. THEY WON'T TALK TO YOU RIGHT NOW." << endl;
-        return false;
+        return;
     }
     
-    // checks if the character is innocent
-    if (npc->getInnocent() == true)
-    {
-        cout << "\"How dare you! Of course I am not the murderer!\"" << endl;
-        cout << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
-
-        npc->accuseTalks();
-        gm->incrementTalks();
-
-        return false;
-    }
-    
-    // character is the murderer
-    else
-    {
-        cout << "\"...You figured it out.\"" << endl;
-        cout << "YOU FOUND THE MURDERER!" << endl;
-
-        gm->setIsWin(true);
-        gm->incrementTalks();
-
-        return true;
-    }
+    cout << endl;
+    cout << "\"How dare you! Of course I am not the murderer.\"" << endl << endl << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
+    npc->accuseTalks();
+    gm->incrementTalks();
 }
