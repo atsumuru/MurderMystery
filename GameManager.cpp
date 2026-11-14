@@ -218,6 +218,8 @@ void GameManager::loseScreen() {
 	cout << "All characters died, leaving only you and the murderer. You were killed." << endl;
 	cout << "Hours Completed: " << roundsDone << endl;
 	cout << "The real murderer was " << characters[whichIsMurderer]->getName() << "." << endl;
-	};
+};
+
+int GameManager::getWhichIsMurderer() { return whichIsMurderer; };
 
 #endif
