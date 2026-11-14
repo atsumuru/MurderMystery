@@ -32,7 +32,7 @@ public:
     // Got rid of displayAscii and displayName for cout override - Esra P.
     void displayCatchphrase();
     void displayMotive(); 
-    void displayAccuse();
+    bool displayAccuse();
 
     string getName() const;
     string getNickName() const;
