@@ -50,7 +50,7 @@ int countPeopleInRoom(CharacterFile* characters[], int count, string room, Chara
     return roomCount;
 }
 
-// used AI to getSecondPerson to integrate with the rest of the characterFiles
+// used ChatGPT to getSecondPerson to integrate with the rest of the characterFiles
 // also helped figure out there was a big issue with creating new objects in selection screen
 
 
