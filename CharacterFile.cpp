@@ -69,9 +69,14 @@ void CharacterFile::displayMotive()
         return;
     }
     
-    // randomly pull one of the three motives
-    int i = rand() % 3;
-    cout << motive[i] << endl;
+    // randomly pull one of the first two motives (positive or neutral) if innocent, and option 2 or 3 (neutral or negative) if murderer
+    if (npc->getInnocent()) {
+        int i = rand() % 2;
+        cout << motive[i] << endl;
+    } else {
+        int i = rand() % 2 + 1;
+        cout << motive[i] << endl;
+    }
 } 
 // Added by Esra
 ostream& operator <<(ostream& os, const CharacterFile& cf) {
