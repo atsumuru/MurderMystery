@@ -17,6 +17,7 @@
 #include "Bartender.h"
 #include "Conductor.h"
 #include "EndOfRoundScreen.h"
+#include "ClearScreen.h"
 
 GameManager::GameManager(int charNum)
 {
@@ -151,8 +152,9 @@ void GameManager::setIsWin(bool value)
 }
 
 void GameManager::winScreen() {
+    clearScreen();
 	cout << R"(
-	    ⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	    ⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⣴⠾⠛⢉⣹⣧⣤⣤⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⣽⠷⠾⠛⠉⠀⠸⣧⣄⡈⢹⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⣰⣿⣄⠀⠀⠀⠀⠀⠀⠙⠛⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -184,9 +186,11 @@ void GameManager::winScreen() {
 		cout << "You solved the murder; however, " << 10 - NPCsLeft << " characters died." << endl;
 	}
 	cout << "The real murderer was " << characters[whichIsMurderer]->getName() << "." << endl;
+	exit(1);
 };
  
 void GameManager::loseScreen() {
+    clearScreen();
 	cout << R"(
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⢤⣠⢷⣝⢦⠀⠀⠀⠀
@@ -218,6 +222,7 @@ void GameManager::loseScreen() {
 	cout << "All characters died, leaving only you and the murderer. You were killed." << endl;
 	cout << "Hours Completed: " << roundsDone << endl;
 	cout << "The real murderer was " << characters[whichIsMurderer]->getName() << "." << endl;
+	exit(1);
 };
 
 int GameManager::getWhichIsMurderer() { return whichIsMurderer; };
