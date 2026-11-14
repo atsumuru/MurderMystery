@@ -34,13 +34,24 @@ Doctor::Doctor()
     *+++==+++++**++++#          #+=++*+++**+      
     )";
 
-    catchphrase[0] = "              \"DOCTOR Catchphrase #1\"";
-    catchphrase[1] = "              \"DOCTOR Catchphrase #2\"";
-    catchphrase[2] = "              \"DOCTOR Catchphrase #3\"";
+    catchphrase[0] = "              \"Hello again.\"";
+    catchphrase[1] = "              \"Did you want to take about my diagnosis again?\"";
+    catchphrase[2] = "              \"He's gone full rigor by now.\"";
 
-    motive[0] = "DOCTOR Positive Motive";
-    motive[1] = "DOCTOR Neutral Motive";
-    motive[2] = "DOCTOR Negative Motive";
+    motive[0] = R"(
+            "As Charles' physician, I've sworn the hippocratic oath. I would never try to take
+             control of a paitent's life like that. What am I, some 'angel of death'?"
+            )";
+    motive[1] = R"(
+            "Charles was my most valued paitent. We both had a great bond. However, he may have
+             caught me dipping into his funds. But, as his doctor, I need to prescribe him the 
+             medicine he needs. Surely, you understand."
+            )";
+    motive[2] = R"(
+            "I've done my best to do what's right for Charles, but he's been adamant on hiring a 
+             different physician. I know it's not my place to question the decision of my paitent,
+             but I don't believe my carrerr would've survived if Charles had fired me." 
+            )";
 }
 
 void Doctor::displayAlibi(CharacterFile* characters[], int count)
