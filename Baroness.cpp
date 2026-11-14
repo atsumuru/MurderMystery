@@ -63,7 +63,7 @@ void Baroness::displayAlibi(CharacterFile* characters[], int count)
 
     cout << endl;
     // dialogue for each room
-    if(room != NULL)
+    if(!room.empty())
     {
         cout << "I was in the " << room << ".";
         fout << "Baroness was in the "<< room << ".";
