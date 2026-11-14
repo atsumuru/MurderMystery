@@ -1,6 +1,7 @@
 #include "Prologue.h"
 #include "SelectionScreen.h"
 #include "GameManager_v2.h"
+#include "ClearScreen.h"
 
 // created 11/9/2026
 // by Payton Phillips
@@ -16,7 +17,7 @@
 
 void prologue()
 {
-    
+    clearScreen();
     cout << R"(
             Mr. Charles Hudson was a wealthy railway tycoon.
             While immoral, he did love to show off.
