@@ -46,10 +46,9 @@ void gameContinue(GameManager& gm)
     
     if(choice == "yes" || choice == "y")
     {
-        gm.startRound();
         selectionScreenMain(gm);
     }
-    else
+    else if (choice == "no" || choice == "n")
     {
         cout << "   How dare you." << endl;
         cout << endl;
