@@ -2,6 +2,7 @@
 #define INTERROGATIONSCREEN_H
 
 #include <iostream>
+#include <cctype>
 using namespace std;
 
 #include "CharacterFile.h"
