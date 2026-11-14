@@ -30,19 +30,22 @@ void interrogateOptions()
 void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
     string choice;
-    
-    // do error checking to take either B or b
-    // or defaut to lowercase
-    
+
     // will tweak selection to only the word so it can access all options
 
-    while (choice != "back" && choice != "b")
+    while (true)
     {
         // display options
         interrogateOptions();
         
-        cout << "WHAT WOULD YOU LIKE TO DO (TYPE FULL WORD)? ";
+        cout << "WHAT WOULD YOU LIKE TO DO? (TYPE FULL WORD): ";
         cin >> choice;
+        
+        // convert choice to lowercase
+        for (int i = 0; i < choice.length(); i++)
+        {
+            choice[i] = tolower(choice[i]);
+        }
         
         if (choice == "alibi")
         {
@@ -66,17 +69,25 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         }
         else if(choice == "accuse")
         {
-            character->displayAccuse();
-            gm.incrementTalks();
-            return;
+            // true = correct accusation
+            // false = incorrect accusation
+
+            if (character->displayAccuse())
+            {
+                return;
+            }
+            else
+            {
+                cout << "CONTINUE INVESTIGATING." << endl;
+
+                // redisplay selected character information
+                characterInfo(character);
+            }
         }
         else
         {
             cout << "INVALID CHOICE. TRY AGAIN." << endl;
         }
-        
-        // after making choice, clear screen, then replace (mayhaps)
-        // catchphrase with motive/alibi text
     }
 }
 
@@ -87,4 +98,9 @@ void interrogationScreenMain(CharacterFile* character, CharacterFile* characters
     
     characterInfo(character);
     interrogateChoice(character, characters, count, gm);
+    
+    if (gm.getIsWin() == true)
+    {
+        gm.winScreen();
+    }
 }
