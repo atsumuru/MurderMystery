@@ -64,7 +64,7 @@ void Conductor::displayAlibi(CharacterFile* characters[], int count)
 
     cout << endl;
     
-    if(room != null)
+    if(!room.empty())
     {
         cout << "I was in the " << room << ".";
         fout << "Conductor was in the "<< room << ".";
