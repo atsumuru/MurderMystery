@@ -22,15 +22,7 @@ GameManager::GameManager(int charNum)
 {
 	numOfChars = charNum;
     whichIsMurderer = -1;
-	
-    // initialize characters
-    for (int i = 0; i < 10; i++)
-    {
-        characters[i] = nullptr;
-    }
-	
-    setCharacterFiles();
-	
+
 	NPCsLeft = charNum - 1;
 	roundsDone = 0;
 	talksInRound = 0;
@@ -44,6 +36,12 @@ GameManager::GameManager(int charNum)
 	talksLeft = talksInRound;
 	isWin = false;
 	
+    // initialize characters
+    for (int i = 0; i < 10; i++)
+    {
+        characters[i] = nullptr;
+    }
+	
     // only create characters if a valid number was provided
     if (charNum > 0 && charNum <= 10)
     {
@@ -54,6 +52,10 @@ GameManager::GameManager(int charNum)
         for (int i = 0; i < charNum; i++)
         {
             characters[i]->gm = this;
+            
+            // remove default NPC before replacing it
+            delete characters[i]->npc;
+            characters[i]->npc = nullptr;
 
             if (i == whichIsMurderer)
             {
@@ -63,6 +65,8 @@ GameManager::GameManager(int charNum)
             {
                 characters[i]->npc = new NPC();
             }
+            
+            //assign NPC name
             characters[i]->npc->setName(characters[i]->getName());
         }
 
@@ -73,7 +77,8 @@ GameManager::GameManager(int charNum)
 }
 GameManager::~GameManager() {
 	for (int i = 0; i < 10; i++) {
-		delete characters[i];
+        delete characters[i];
+        characters[i] = nullptr;
 	}
 }
 void GameManager::setCharacterFiles() {
@@ -139,6 +144,11 @@ int GameManager::getTalksLeft() { return talksLeft; }
 int GameManager::getNPCsLeft() { return NPCsLeft; }
 NPC* GameManager::getNPC(int i) { return characters[i]->npc; }
 bool GameManager::getIsWin() { return isWin;}
+
+void GameManager::setIsWin(bool value)
+{
+    isWin = value;
+}
 
 void GameManager::winScreen() {
 	cout << R"(
