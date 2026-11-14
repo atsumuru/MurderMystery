@@ -2,6 +2,7 @@
 #include "InterrogationScreen.h"
 #include "SelectionScreen.h"
 #include "GameManager_v2.h"
+#include "ClearScreen.h"
 
 // displays selected character information
 void characterInfo(CharacterFile* character)
@@ -49,12 +50,14 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         
         if (choice == "alibi")
         {
+            clearScreen();
             character->displayAlibi(characters, count);
             cout << endl;
             gm.incrementTalks();
         }
         else if (choice == "motive")
         {
+            clearScreen();
             character->displayMotive();
             cout << endl;
             gm.incrementTalks();
@@ -71,7 +74,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         {
             // true = correct accusation
             // false = incorrect accusation
-
+            clearScreen();
             if (character->displayAccuse())
             {
                 return;
@@ -93,6 +96,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
 
 void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
+    clearScreen();
     // checks if a character is selected
     if (characters == nullptr) { return; }
     
