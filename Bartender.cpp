@@ -63,7 +63,7 @@ void Bartender::displayAlibi(CharacterFile* characters[], int count)
     cout << endl;
     cout << "           ";
     
-    if(room != null)
+    if(!room.empty())
     {
         cout << "I was in the " << room << ".";
         fout << "Bartender was in the "<< room << ".";
