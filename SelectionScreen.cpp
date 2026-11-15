@@ -26,52 +26,52 @@ void selectionScreen()
     
     cout << endl;
     
-    cout << "   OPTION 1:    ";
+    cout << "   OPTION 1:    " << endl;
     cout << "       THE BARONESS, MRS. LENORA HUDSON" << endl;
     
     cout << endl;
      
-    cout << "   OPTION 2:    ";
+    cout << "   OPTION 2:    " << endl;
     cout << "       THE FEMME FATALE, MADAME MARGAUX ROUGE" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 3:  ";
+    cout << "   OPTION 3:  " << endl;
     cout << "       THE ENGINEER, MS. CASSIE (CASSANDRA) HARDWELL" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 4:   ";
+    cout << "   OPTION 4:   " << endl;
     cout << "       THE DOCTOR, DOCTOR ANDREW REYNOLDS" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 5:   ";
+    cout << "   OPTION 5:   " << endl;
     cout << "       THE CRITIC, MR. REGINALD SINCLAIR" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 6:    ";
+    cout << "   OPTION 6:    " << endl;
     cout << "       THE PROFESSOR, PROFESSOR ARCHWIN STEIN" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 7:  ";
+    cout << "   OPTION 7:  " << endl;
     cout << "       THE SERVANT, MR. JACKSON (HANDY) CONROY" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 8:  ";
+    cout << "   OPTION 8:  " << endl;
     cout << "       THE INVESTIGATOR, PI PRESTON JONES" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 9:   ";
+    cout << "   OPTION 9:   " << endl;
     cout << "       THE BARTENDER, MR. WILLIAM O'DOYLE" << endl;
     
     cout << endl;
     
-    cout << "   OPTION 10:    ";
+    cout << "   OPTION 10:    " << endl;
     cout << "       THE CONDUCTOR, MR. ARNOLD HARRIS" << endl;
     
     cout << endl;
@@ -87,6 +87,7 @@ void selectCharacter(GameManager& gm, int count)
     CharacterFile* selectedCharacter = nullptr;
     
     cout << "for testing: the murderer is character " << gm.getWhichIsMurderer() + 1 << endl;
+    cout << "for testing: interrogations left til end of round are " << gm.getTalksLeft() << endl;
     
     cout << "PLEASE SELECT A CHARACTER (ENTER INTEGER): ";
     cin >> choice;
@@ -156,6 +157,11 @@ void selectCharacter(GameManager& gm, int count)
             return;
         }
         
+        // counts this character only once per round
+        bool newInterrogation = gm.countInterrogation(choice - 1);
+        
+        
+        
         // decrease forgiveness counters for OTHER characters
         for (int i = 0; i < count; i++)
         {
@@ -168,6 +174,16 @@ void selectCharacter(GameManager& gm, int count)
         // used the pointer to access the selected character file,
         // and pull it to the interrogation screen
         interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
+        
+        // ends the round after interrogating 4 different characters
+        if (gm.getIsWin() == false && gm.getCompletedInterrogation() == true)
+        {
+            cout << endl;
+            cout << "YOU HAVE INTERROGATED 4 DIFFERENT PEOPLE." << endl;
+            cout << "THE ROUND IS OVER." << endl;
+
+            gm.endRound();
+        }
     }
 }
 
@@ -185,7 +201,7 @@ void selectionScreenMain(GameManager& gm)
         selectCharacter(gm, 10);
 
         cout << endl;
-        cout << "RETURN TO CHARACTER SELECTION? (Type 'y' for yes): ";
+        cout << "CONTINUE? (Type 'y' for yes): ";
         cin >> choice;
         
         // keeps asking until the user enters y
