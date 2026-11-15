@@ -2,7 +2,7 @@
 
 Doctor::Doctor()
 {
-    name = "                DOCTOR ANDREW REYNOLDS";
+    name = "DOCTOR ANDREW REYNOLDS";
     nickName = "Dr. Reynolds";
 
     ascii = R"(
