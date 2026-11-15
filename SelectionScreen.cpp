@@ -147,6 +147,16 @@ void selectCharacter(GameManager& gm, int count)
     // if the pointer isnt nullptr, a character is selected
     if (selectedCharacter != nullptr)
     {
+        // checks if the character is dead
+        if (selectedCharacter->npc->getAlive() == false)
+        {
+            cout << endl;
+            cout << "THIS CHARACTER IS DEAD." << endl;
+            cout << "YOU CANNOT INTERROGATE THEM." << endl;
+    
+            return;
+        }
+        
         // checks if the selected character refuses to talk
         if (selectedCharacter->npc->getTalksToForgiveness() > 0)
         {
@@ -156,11 +166,6 @@ void selectCharacter(GameManager& gm, int count)
 
             return;
         }
-        
-        // counts this character only once per round
-        bool newInterrogation = gm.countInterrogation(choice - 1);
-        
-        
         
         // decrease forgiveness counters for OTHER characters
         for (int i = 0; i < count; i++)
@@ -178,10 +183,7 @@ void selectCharacter(GameManager& gm, int count)
         // ends the round after interrogating 4 different characters
         if (gm.getIsWin() == false && gm.getCompletedInterrogation() == true)
         {
-            cout << endl;
-            cout << "YOU HAVE INTERROGATED 4 DIFFERENT PEOPLE." << endl;
-            cout << "THE ROUND IS OVER." << endl;
-
+            cout << "YOU HAVE USED ALL YOUR INTERROGATIONS. THE ROUND IS OVER.";
             gm.endRound();
         }
     }
