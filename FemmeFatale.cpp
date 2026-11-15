@@ -2,7 +2,7 @@
 
 FemmeFatale::FemmeFatale()
 {
-    name = "                MADAME MARGAUX ROUGÊ";
+    name = "MADAME MARGAUX ROUGÊ";
     nickName = "Madame Rougê";
 
     ascii = R"(
