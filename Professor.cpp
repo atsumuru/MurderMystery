@@ -2,7 +2,7 @@
 
 Professor::Professor()
 {
-    name = "                PROFESSOR ARCHWIN STEIN";
+    name = "PROFESSOR ARCHWIN STEIN";
     nickName = "Professor Stein";
 
     ascii = R"(
