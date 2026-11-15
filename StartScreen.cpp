@@ -35,6 +35,12 @@ void gameOptions(GameManager& gm)
     cout << "   CHOOSE AN OPTION: ";
     cin >> option;
     
+    // convert option to lowercase
+    for (int i = 0; i < option.length(); i++)
+    {
+        option[i] = tolower(option[i]);
+    }
+    
     if(option == "start" || option == "s")
     {
         prologueMain(gm);
