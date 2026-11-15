@@ -52,10 +52,12 @@ void goBack(GameManager& gm)
   
     if(choice == "yes" || choice == "y")
     {
+        clearScreen();
         startScreenMain(gm);
     }
     else
     {
+        clearScreen();
         instructionsMain(gm);
     }
     
