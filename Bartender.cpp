@@ -2,7 +2,7 @@
 
 Bartender::Bartender()
 {
-    name = "                MR. WILLIAM O'DOYLE";
+    name = "MR. WILLIAM O'DOYLE";
     nickName = "Mr. O'Doyle";
 
     ascii = R"(
