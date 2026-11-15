@@ -146,6 +146,25 @@ void selectCharacter(GameManager& gm, int count)
     // if the pointer isnt nullptr, a character is selected
     if (selectedCharacter != nullptr)
     {
+        // checks if the selected character refuses to talk
+        if (selectedCharacter->npc->getTalksToForgiveness() > 0)
+        {
+            cout << endl;
+            cout << "YOU FALSELY ACCUSED THIS PERSON." << endl;
+            cout << "THEY WON'T TALK TO YOU RIGHT NOW." << endl;
+
+            return;
+        }
+        
+        // decrease forgiveness counters for OTHER characters
+        for (int i = 0; i < count; i++)
+        {
+            if (gm.characters[i] != selectedCharacter)
+            {
+                gm.characters[i]->npc->decreaseTalksToForgiveness();
+            }
+        }
+        
         // used the pointer to access the selected character file,
         // and pull it to the interrogation screen
         interrogationScreenMain(selectedCharacter, gm.characters, count, gm);
@@ -154,15 +173,6 @@ void selectCharacter(GameManager& gm, int count)
 
 void selectionScreenMain(GameManager& gm)
 {
-    // for(int i = 0; i < 10; i++) {
-    //     try{
-    //     gm.characters[i]->npc->setName(gm.characters[i]->getName());
-    //     throw(gm.characters[i]->getName());
-    //     }
-    //     catch(string n) {
-    //         cout << "Error with " << n << endl;
-    //     }
-    // }
     
     // this whole section is needed because if you choice to go back in interrogation,
     // it will either close the program (with just a return statement),
@@ -186,7 +196,7 @@ void selectionScreenMain(GameManager& gm)
             cout << "INVALID. IT WASN'T A QUESTION. :P" << endl;
     
             cout << endl;
-            cout << "RETURN TO CHARACTER SELECTION? (Type 'y' for yes): ";
+            cout << "CONTINUE? (Type 'y' for yes): ";
             cin >> choice;
         }
     }
