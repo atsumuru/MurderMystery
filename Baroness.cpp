@@ -2,7 +2,7 @@
 
 Baroness::Baroness()
 {
-    name = "                MRS. LENORA HUDSON";
+    name = "MRS. LENORA HUDSON";
     nickName = "Mrs. Hudson";
 
     ascii = R"(
