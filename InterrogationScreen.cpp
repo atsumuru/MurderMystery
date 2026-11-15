@@ -84,9 +84,6 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
             else
             {
                 cout << "CONTINUE INVESTIGATING." << endl;
-
-                // redisplay selected character information
-                characterInfo(character);
             }
         }
         else
