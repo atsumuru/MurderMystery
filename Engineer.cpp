@@ -2,7 +2,7 @@
 
 Engineer::Engineer()
 {
-    name = "                MS. CASSIE (CASSANDRA) HARDWELL";
+    name = "MS. CASSIE (CASSANDRA) HARDWELL";
     nickName = "Ms. Hardwell";
 
     ascii = R"(
