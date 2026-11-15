@@ -29,6 +29,7 @@ public:
 	int getTalksToForgiveness();
 	string getName();
 	void accuseTalks();
+    void decreaseTalksToForgiveness(); // to get the forgiveness working
 	void setName(string s);
 	virtual void newChance(); // to make murderer work
 	virtual vector<int> doesKill(NPC* c[10], int me); // to make murderer work
