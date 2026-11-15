@@ -201,7 +201,7 @@ bool CharacterFile::displayAccuse() {
         cout << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
 
         npc->accuseTalks();
-        gm->incrementTalks();
+        // gm->incrementTalks();
 
         return false;
     }
@@ -213,7 +213,7 @@ bool CharacterFile::displayAccuse() {
         cout << "YOU FOUND THE MURDERER!" << endl;
 
         gm->setIsWin(true);
-        gm->incrementTalks();
+        // gm->incrementTalks();
 
         return true;
     }
