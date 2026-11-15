@@ -39,23 +39,25 @@ void endOfRoundScreen(int rounds, NPC* char1, NPC*char2) {
 
     )" << endl << endl; //https://www.asciiart.eu/art/e1929916d5eb95e7
     
-    cout << "\t\t\t\t\t THE MURDERER STRIKES AGAIN" << endl<<endl;
-    cout << "\t\t\t\t\t" << char1->getName();
-    if (char2 != NULL) {
-        cout << " and " << char2->getName() << " have been found dead.";
-    } else {
-        cout << " has been found dead.";
+    cout << " THE MURDERER STRIKES AGAIN" << endl<<endl;
+    
+    if (char1 != nullptr)
+    {
+        cout << "" << char1->getName();
+        
+        if (char2 != nullptr) {
+            cout << " and " << char2->getName() << " have been found dead.";
+        } else {
+            cout << " has been found dead.";
+        }
     }
+    else
+    {
+        cout << "NO ONE DIED TONIGHT.";
+    }
+
     cout << endl << endl << endl;
     sleep_for(seconds(7));
 }
-
-// int main() {
-//     NPC firstKill("Charlie");
-//     NPC secondKill("Fred");
-//     endOfRoundScreen(1, &firstKill);
-//     sleep_for(seconds(5));
-//     endOfRoundScreen(2, &firstKill, &secondKill);
-// }
 
 #endif
