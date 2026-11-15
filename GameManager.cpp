@@ -98,7 +98,18 @@ void GameManager::setCharacterFiles() {
 }
 
 void GameManager::incrementTalks() { talksLeft--; }
-void GameManager::startRound() { talksLeft = talksInRound; }
+
+void GameManager::startRound()
+{
+    talksLeft = talksInRound;
+}
+
+// checks if 4 different characters have been interrogated
+bool GameManager::getCompletedInterrogation()
+{
+    return talksLeft <= 0;
+}
+
 void GameManager::checkAlives() {
 	int x = 0;
 	for (int i = 0; i < numOfChars; i++) {
@@ -121,7 +132,31 @@ void GameManager::endRound() {
 	    killed = characters[whichIsMurderer]->npc->doesKill(c, whichIsMurderer);
 	}
 	checkAlives();
-	endOfRoundScreen(roundsDone, c[killed[0]], c[killed[1]]);
+	
+    // store the first and second deaths
+    NPC* firstKilled = nullptr;
+    NPC* secondKilled = nullptr;
+	
+	// check death 1
+    if (killed.size() >= 1)
+    {
+        if (killed[0] >= 0 && killed[0] < 10)
+        {
+            firstKilled = c[killed[0]];
+        }
+    }
+	
+    // check death 2
+    if (killed.size() >= 2)
+    {
+        if (killed[1] >= 0 && killed[1] < 10)
+        {
+            secondKilled = c[killed[1]];
+        }
+    }
+	
+    endOfRoundScreen(roundsDone, firstKilled, secondKilled);
+	// endOfRoundScreen(roundsDone, c[killed[0]], c[killed[1]]);
 	startRound();
 }
 
@@ -174,13 +209,13 @@ void GameManager::winScreen() {
 	cout << endl;
 	
 	cout << R"(
-		  __   __  _______  __   __    _     _  ___   __    _ 
-		 |  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |
-		 |  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |
-		 |       ||  | |  ||  |_|  |  |       ||   | |       |
-		 |_     _||  |_|  ||       |  |       ||   | |  _    |
-		   |   |  |       ||       |  |   _   ||   | | | |   |
-		   |___|  |_______||_______|  |__| |__||___| |_|  |__| )" << endl; // https://patorjk.com/software/taag/#p=display&f=Modular&t=YOU+WIN&x=none&v=4&h=4&w=80&we=false
+  __   __  _______  __   __    _     _  ___   __    _ 
+ |  | |  ||       ||  | |  |  | | _ | ||   | |  |  | |
+ |  |_|  ||   _   ||  | |  |  | || || ||   | |   |_| |
+ |       ||  | |  ||  |_|  |  |       ||   | |       |
+ |_     _||  |_|  ||       |  |       ||   | |  _    |
+   |   |  |       ||       |  |   _   ||   | | | |   |
+   |___|  |_______||_______|  |__| |__||___| |_|  |__| )" << endl; // https://patorjk.com/software/taag/#p=display&f=Modular&t=YOU+WIN&x=none&v=4&h=4&w=80&we=false
 	
 	cout << endl;
 	
@@ -221,13 +256,13 @@ void GameManager::loseScreen() {
     cout << endl;
 
 	cout << R"(
-         __   __  _______  __   __    ___      _______  _______  _______ 
-        |  | |  ||       ||  | |  |  |   |    |       ||       ||       |
-        |  |_|  ||   _   ||  | |  |  |   |    |   _   ||  _____||    ___|
-        |       ||  | |  ||  |_|  |  |   |    |  | |  || |_____ |   |___ 
-        |_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  ||    ___|
-          |   |  |       ||       |  |       ||       | _____| ||   |___ 
-          |___|  |_______||_______|  |_______||_______||_______||_______|  )" << endl;
+  __   __  _______  __   __    ___      _______  _______  _______ 
+ |  | |  ||       ||  | |  |  |   |    |       ||       ||       |
+ |  |_|  ||   _   ||  | |  |  |   |    |   _   ||  _____||    ___|
+ |       ||  | |  ||  |_|  |  |   |    |  | |  || |_____ |   |___ 
+ |_     _||  |_|  ||       |  |   |___ |  |_|  ||_____  ||    ___|
+   |   |  |       ||       |  |       ||       | _____| ||   |___ 
+   |___|  |_______||_______|  |_______||_______||_______||_______|  )" << endl;
 
     cout << endl;
 
