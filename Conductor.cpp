@@ -2,7 +2,7 @@
 
 Conductor::Conductor()
 {
-    name = "                MR. ARNOLD HARRIS";
+    name = "MR. ARNOLD HARRIS";
     nickName = "Mr. Harris";
 
     ascii = R"(
