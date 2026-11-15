@@ -188,7 +188,7 @@ bool CharacterFile::displayAccuse() {
     }
     
     // checks if you didn't already falsely accuse them
-    if (npc->getTalksToForgiveness() != 0)
+    if (npc->getTalksToForgiveness() > 0)
     {
         cout << "YOU FALSELY ACCUSED THIS PERSON. THEY WON'T TALK TO YOU RIGHT NOW." << endl;
         return false;
