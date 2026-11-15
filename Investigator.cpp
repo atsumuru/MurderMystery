@@ -2,7 +2,7 @@
 
 Investigator::Investigator()
 {
-    name = "                PI PRESTON JONES";
+    name = "PI PRESTON JONES";
     nickName = "Mr. Jones";
 
     ascii = R"(
