@@ -80,7 +80,7 @@ void CharacterFile::displayMotive()
 } 
 // Added by Esra
 ostream& operator <<(ostream& os, const CharacterFile& cf) {
-    os << cf.name << endl << cf.ascii << endl; 
+    os << "                " << cf.name << endl << cf.ascii << endl; 
     return os;
 }
 
@@ -201,7 +201,7 @@ bool CharacterFile::displayAccuse() {
         cout << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
 
         npc->accuseTalks();
-        // gm->incrementTalks();
+        // gm->incrementTalks(); // need clarification: what is this affecting again?
 
         return false;
     }
@@ -213,7 +213,7 @@ bool CharacterFile::displayAccuse() {
         cout << "YOU FOUND THE MURDERER!" << endl;
 
         gm->setIsWin(true);
-        // gm->incrementTalks();
+        // gm->incrementTalks(); // need clarification
 
         return true;
     }
