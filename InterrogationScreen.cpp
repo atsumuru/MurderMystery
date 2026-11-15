@@ -28,9 +28,10 @@ void interrogateOptions()
 }
 
 // gets choice
-void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
+bool interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
     string choice;
+    bool interrogated = false;
 
     // creates infinite loop until it is explicitly stopped
     while (true)
@@ -54,6 +55,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
             cout << endl;
             character->displayAlibi(characters, count);
             cout << endl;
+            
             gm.incrementTalks();
         }
         else if (choice == "motive")
@@ -62,6 +64,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
             cout << endl;
             character->displayMotive();
             cout << endl;
+            
             gm.incrementTalks();
         }
         else if (choice == "notes")
@@ -70,7 +73,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         }
         else if (choice == "back")
         {
-            return;
+            return interrogated;
         }
         else if(choice == "accuse")
         {
@@ -79,7 +82,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
             clearScreen();
             if (character->displayAccuse())
             {
-                return;
+                return interrogated;
             }
             else
             {
@@ -94,17 +97,19 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
     }
 }
 
-void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
+bool interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm)
 {
     clearScreen();
     // checks if a character is selected
-    if (characters == nullptr) { return; }
-    
-    interrogateChoice(character, characters, count, gm);
+    if (characters == nullptr) { return false; }
+
+    bool interrogated = interrogateChoice(character, characters, count, gm);
 
     // if inccorectly guess character, 
     if (gm.getIsWin() == true)
     {
         gm.winScreen();
     }
+    
+    return interrogated;
 }
