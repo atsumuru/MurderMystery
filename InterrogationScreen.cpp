@@ -32,10 +32,10 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
 {
     string choice;
 
-    // will tweak selection to only the word so it can access all options
-
+    // creates infinite loop until it is explicitly stopped
     while (true)
     {
+        characterInfo(character);
         // display options
         interrogateOptions();
         
@@ -51,6 +51,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         if (choice == "alibi")
         {
             clearScreen();
+            cout << endl;
             character->displayAlibi(characters, count);
             cout << endl;
             gm.incrementTalks();
@@ -58,6 +59,7 @@ void interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         else if (choice == "motive")
         {
             clearScreen();
+            cout << endl;
             character->displayMotive();
             cout << endl;
             gm.incrementTalks();
@@ -100,9 +102,9 @@ void interrogationScreenMain(CharacterFile* character, CharacterFile* characters
     // checks if a character is selected
     if (characters == nullptr) { return; }
     
-    characterInfo(character);
     interrogateChoice(character, characters, count, gm);
-    
+
+    // if inccorectly guess character, 
     if (gm.getIsWin() == true)
     {
         gm.winScreen();
