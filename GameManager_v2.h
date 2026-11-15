@@ -24,6 +24,9 @@ protected:
 	int talksInRound;
 	int talksLeft;
 	bool isWin;
+	
+	bool talkedTo[10];    // tracks which characters have been interrogated (t/f)
+	int peopleInterrogated; // tracks the number of different characters you've interrogated
 public:
     CharacterFile* characters[10];
 	GameManager(int charNum);
@@ -34,6 +37,10 @@ public:
 	void checkAlives();
 	void endRound();
 	void run();
+	
+	bool countInterrogation(int charIndex); // count each interrogation
+	bool getCompletedInterrogation(); // tells you when you interrogated 4 people
+	
 	int getRoundsDone();
 	int getTalksLeft();
 	int getNPCsLeft();
