@@ -39,6 +39,15 @@ bool NPC::getInnocent() { return isInnocent; }
 int NPC::getTalksToForgiveness() { return talksToForgiveness; }
 string NPC::getName() { return name; }
 void NPC::accuseTalks() { talksToForgiveness = 3;}
+
+void NPC::decreaseTalksToForgiveness()
+{
+    if (talksToForgiveness > 0)
+    {
+        talksToForgiveness--;
+    }
+}
+
 void NPC::setName(string s) { name = s; }
 void NPC::newChance() {}
 vector<int> NPC::doesKill(NPC* c[10], int me) { return {-1};}
