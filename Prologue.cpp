@@ -1,3 +1,13 @@
+/********************************************************
+* Created: 11/9
+* Edit: 11/10 Add gameContinue and selectionScreenMain
+* Edit: 11/13 Add actual prologue text and implement
+*            GameManager
+* Edit: 11/14 Add clearScreen function
+* 
+* Contributers: Payton Phillips and Gabrielle de Leeuw
+********************************************************/
+
 #include "Prologue.h"
 #include "SelectionScreen.h"
 #include "GameManager_v2.h"
