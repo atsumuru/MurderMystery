@@ -47,9 +47,16 @@ FemmeFatale::FemmeFatale()
     catchphrase[1] = "              \"Diamonds are a girl's best friend, didn't you know that?\"";
     catchphrase[2] = "              \"Make it quick- I'm a very busy woman.\"";
 
-    motive[0] = "Such a shame to lose Charles. A man as handsome as that is wasted on death. Oh well; I suppose that's just how these things go.";
-    motive[1] = "Isn't the wife usually the primary suspect? She's the one who got his money in the end, after all.";
-    motive[2] = "It's really too bad that Charles is dead. Anyway, did I tell you about my recent shopping spree? My... um... third cousin twice removed sent me a fortune.";
+    motive[0] = R"(
+            "Such a shame to lose Charles. A man as handsome as that is wasted on death. Oh well; I suppose that's just how these things go."
+            )";
+    motive[1] = R"(
+            "Isn't the wife usually the primary suspect? She's the one who got his money in the end, after all."
+            )";
+    motive[2] = R"(
+            "It's really too bad that Charles is dead. Anyway, did I tell you about my recent shopping spree?
+             My... um... third cousin twice removed sent me a fortune."
+            )";
 }
 
 void FemmeFatale::displayAlibi(CharacterFile* characters[], int count)
