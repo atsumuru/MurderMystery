@@ -1,3 +1,20 @@
+/********************************************************
+* Created: 11/6
+* Edit: 11/10 Implement constructors and destructors
+* Edit: 11/11 Add operation overload for name and ascii
+* Edit: 11/12 Integrate alibi into CharacterFile
+* Edit: 11/13 Add GameManager constructor, check alive,
+*        momory management, and displayAccuse to return
+*        return bool
+* Edit: 11/14 Fix checking for false accusation, comment
+*       out IncrementTalks() and refactor operation
+*       overload
+* Edit: 11/16 Add file output
+* 
+* Contributers: Payton Phillips, Gabriella de Leeuw, and
+*             Esra Petty
+********************************************************/
+
 #include "CharacterFile.h"
 #include "GameManager_v2.h"
 #include "Alibi.h"
@@ -21,7 +38,10 @@ CharacterFile::CharacterFile()
     npc = new NPC();
 }
 
-CharacterFile::CharacterFile(GameManager* gm) {
+// decided to keep both because if you take out the first one
+// it affects all the characters
+CharacterFile::CharacterFile(GameManager* gm)
+{
     ascii = "ASCII PLACEHOLDER";
     
     name = "HONORIFIC FIRST LAST";
@@ -71,11 +91,14 @@ void CharacterFile::displayMotive()
     }
     
     // randomly pull one of the first two motives (positive or neutral) if innocent, and option 2 or 3 (neutral or negative) if murderer
-    if (npc->getInnocent()) {
+    if (npc->getInnocent())
+    {
         int i = rand() % 2;
         cout << motive[i] << endl; 
         fout << nickName << ": " << motive[i] << endl;
-    } else {
+    } 
+    else
+    {
         int i = rand() % 2 + 1;
         cout << motive[i] << endl;
         fout << nickName << ": " << motive[i] << endl;
@@ -83,7 +106,8 @@ void CharacterFile::displayMotive()
     fout.close();
 } 
 // Added by Esra
-ostream& operator <<(ostream& os, const CharacterFile& cf) {
+ostream& operator <<(ostream& os, const CharacterFile& cf)
+{
     os << "                " << cf.name << endl << cf.ascii << endl; 
     return os;
 }
@@ -181,8 +205,8 @@ void CharacterFile::displayAlibi(CharacterFile* characters[], int count)
     }
 }
 
-bool CharacterFile::displayAccuse() {
-    
+bool CharacterFile::displayAccuse()
+{
     // checks if character is dead or alive
     if (npc->getAlive() == false)
     {
@@ -190,14 +214,12 @@ bool CharacterFile::displayAccuse() {
         cout << "THEY CANNOT RESPOND TO YOUR ACCUSATION." << endl << endl;
         return false;
     }
-    
     // checks if you didn't already falsely accuse them
     if (npc->getTalksToForgiveness() > 0)
     {
         cout << "YOU FALSELY ACCUSED THIS PERSON. THEY WON'T TALK TO YOU RIGHT NOW." << endl;
         return false;
     }
-    
     // checks if the character is innocent
     if (npc->getInnocent() == true)
     {
@@ -205,11 +227,9 @@ bool CharacterFile::displayAccuse() {
         cout << "YOU HAVE ACCUSED AN INNOCENT BYSTANDER." << endl;
 
         npc->accuseTalks();
-        // gm->incrementTalks(); // need clarification: what is this affecting again?
 
         return false;
     }
-    
     // character is the murderer
     else
     {
@@ -217,7 +237,6 @@ bool CharacterFile::displayAccuse() {
         cout << "YOU FOUND THE MURDERER!" << endl;
 
         gm->setIsWin(true);
-        // gm->incrementTalks(); // need clarification
 
         return true;
     }
