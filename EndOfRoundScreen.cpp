@@ -14,7 +14,8 @@ using namespace std;
 using namespace std::this_thread; // sleep_for, sleep_until
 using namespace std::chrono; // nanoseconds, system_clock, seconds
 
-void endOfRoundScreen(int rounds, NPC* char1, NPC*char2) {
+void endOfRoundScreen(int rounds, NPC* char1, NPC*char2)
+{
     clearScreen();
     cout << endl << endl << endl << endl;
     string toSay = "END OF HOUR " + to_string(rounds);
@@ -45,9 +46,12 @@ void endOfRoundScreen(int rounds, NPC* char1, NPC*char2) {
     {
         cout << "" << char1->getName();
         
-        if (char2 != nullptr) {
+        if (char2 != nullptr)
+        {
             cout << " and " << char2->getName() << " have been found dead.";
-        } else {
+        }
+        else
+        {
             cout << " has been found dead.";
         }
     }
