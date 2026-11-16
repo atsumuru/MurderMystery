@@ -133,6 +133,13 @@ void GameManager::endRound() {
 	}
 	checkAlives();
 	
+	// checks if there is one person left
+    if (NPCsLeft <= 1)
+    {
+        loseScreen();
+        return;
+    }
+	
     // store the first and second deaths
     NPC* firstKilled = nullptr;
     NPC* secondKilled = nullptr;
