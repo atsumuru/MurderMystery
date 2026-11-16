@@ -1,3 +1,10 @@
+/********************************************************
+* Created: 11/14
+* Edit: 11/14 Add clear screen function
+* 
+* Contributers: Gabriella de Leeuw
+********************************************************/
+
 #include <iostream>
 
 using namespace std;
