@@ -1,3 +1,16 @@
+/********************************************************
+* Created: 11/11
+* Edit: 11/12 Add call to displayAlibi and update back option
+* Edit: 11/13 Add accuse option, implement GameManager, add
+*           choice handling, refine choice outputs
+* Edit: 11/14 Integrate clearScreen, change interrogateChoice
+*           from void to bool for accuse handling
+* Edit: 11/16 Implement notes
+* 
+* Contributers: Payton Phillips, Gabrielle de Leeuw, and
+*                Esra Petty
+********************************************************/
+
 #include "CharacterFile.h"
 #include "InterrogationScreen.h"
 #include "SelectionScreen.h"
