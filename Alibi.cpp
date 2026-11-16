@@ -1,3 +1,14 @@
+/********************************************************
+* Created: 11/10
+* Edit: 11/12 Fully implemented scripts into the game
+* Edit: 11/12 Integrated real alibis with getSecondPerson
+*         so alibis matched
+* Edit: 11/14 Created "Murder Room" so the murderer has
+*         false alibi
+* 
+* Contributers: Payton Phillips and Gabrielle de Leeuw
+********************************************************/
+
 #include "Alibi.h"
 
 string rooms[7] =
