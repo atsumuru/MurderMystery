@@ -22,14 +22,12 @@ string rooms[7] =
     "Murder Room"
 };
 
-void murdererAssignNewRoom(CharacterFile* characters[], int count, int me) {
+void murdererAssignNewRoom(CharacterFile* characters[], int count, int me)
+{
     cout << "murderer is reassigning alibi" << endl;
     int randomRoom = rand() % 6;
-    // while (countPeopleInRoom(characters, count, rooms[randomRoom], characters[me]) >= 2)
-    // {
-    //     randomRoom = rand() % 6;
-    // }
     characters[me]->setRoom(rooms[randomRoom]);
+    
     cout << "new room should be " << rooms[randomRoom] << endl;
 }
 
@@ -54,7 +52,6 @@ void assignRoom(CharacterFile* characters[], int count)
         // find a room with fewer than two characters
         
         // assigns characters a room
-       
         characters[i]->setRoom(rooms[randomRoom]);
         roomCount[randomRoom]++;
     }
@@ -80,7 +77,6 @@ int countPeopleInRoom(CharacterFile* characters[], int count, string room, Chara
 // used ChatGPT to getSecondPerson to integrate with the rest of the characterFiles
 // also helped figure out there was a big issue with creating new objects in selection screen
 
-
 // find nickname for the character in the other room
 string getSecondPerson(CharacterFile* characters[], int count, string room, CharacterFile* currentCharacter)
 {
@@ -91,7 +87,6 @@ string getSecondPerson(CharacterFile* characters[], int count, string room, Char
             return characters[i]->getNickName();
         }
     }
-
     return "";
 }
 
