@@ -1,3 +1,14 @@
+/********************************************************
+* Created: 11/4
+* Edit: 11/6 Add ascii and constructor
+* Edit: 11/11 Update dialogue
+* Edit: 11/12 Update displayAlibi
+* Edit: 11/13 Refactor displayAlibi information
+* Edit: 11/14 Update room check
+* 
+* Contributers: Payton Phillips and Esra Petty
+********************************************************/
+
 #include "Bartender.h"
 
 Bartender::Bartender()
