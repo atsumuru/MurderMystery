@@ -12,7 +12,9 @@ using namespace std;
 
 void characterInfo(CharacterFile* characters);
 void interrogateOptions();
-void interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm);
-void interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm);
+
+// changed to bool to keep track of interrogations
+bool interrogateChoice(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm);
+bool interrogationScreenMain(CharacterFile* character, CharacterFile* characters[], int count, GameManager& gm);
 
 #endif
