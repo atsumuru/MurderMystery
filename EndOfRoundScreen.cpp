@@ -1,6 +1,3 @@
-#ifndef ENDOFROUNDSCREEN_CPP
-#define ENDOFROUNDSCREEN_CPP
-
 #include <iostream>
 #include <string>
 #include <chrono>
@@ -64,4 +61,3 @@ void endOfRoundScreen(int rounds, NPC* char1, NPC*char2)
     //sleep_for(seconds(7));
 }
 
-#endif
