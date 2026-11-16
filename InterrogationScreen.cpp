@@ -69,7 +69,16 @@ bool interrogateChoice(CharacterFile* character, CharacterFile* characters[], in
         }
         else if (choice == "notes")
         {
-            // not sure what I want to do here yet
+            ifstream fin("NotePad.txt");
+            clearScreen(); 
+            cout << endl; 
+            string line;
+            while(getline(fin, line)) 
+                cout << line << '\n'; 
+            fin.close(); 
+
+            cout << endl;
+            
         }
         else if (choice == "back")
         {
