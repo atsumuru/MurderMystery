@@ -139,7 +139,8 @@ void selectCharacter(GameManager& gm, int count)
             break;
     }
     
-    if(gm.characters[choice - 1]->npc->getInnocent() == false) {
+    if(gm.characters[choice - 1]->npc->getInnocent() == false)
+    {
         murdererAssignNewRoom(gm.characters, count, choice - 1);
     }
 
@@ -218,11 +219,4 @@ void selectionScreenMain(GameManager& gm)
             cin >> choice;
         }
     }
-    
-    // // deletes allocated memory
-    // for (int i = 0; i < 10; i++)
-    // {
-    //     delete characters[i];
-    //     characters[i] = nullptr;
-    // }
 }
