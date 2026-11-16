@@ -12,7 +12,8 @@ class GameManager;
 
 using namespace std;
 
-class CharacterFile {
+class CharacterFile
+{
 protected:
     string ascii; 
     string name;
