@@ -2,9 +2,6 @@
 // 10/31/26 [moved function defenitions from .h to .cpp]
 // .cpp file for NPC and Murderer classes
 
-#ifndef NPCCLASS_CPP
-#define NPCCLASS_CPP
-
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -17,7 +14,8 @@
 
 using namespace std;
 
-NPC::NPC() {
+NPC::NPC()
+{
 		isAlive = true;
 		isInnocent = true;
 		talksToForgiveness = 0;
@@ -25,7 +23,8 @@ NPC::NPC() {
 
 NPC::~NPC() {}
 
-NPC::NPC(string name) : name(name) {
+NPC::NPC(string name) : name(name)
+{
 	isAlive = true;
 	isInnocent = true;
 	talksToForgiveness = 0;
@@ -54,7 +53,8 @@ vector<int> NPC::doesKill(NPC* c[10], int me) { return {-1};}
 
 void NPC::kill() { isAlive = false; }
 
-Murderer::Murderer() {
+Murderer::Murderer()
+{
     name = "name";
     isAlive = true;
     talksToForgiveness = 0;
@@ -64,7 +64,8 @@ Murderer::Murderer() {
 	killTwice = false;   
 }
 
-Murderer::Murderer(string n) {
+Murderer::Murderer(string n)
+{
 		name = n;
 		isAlive = true;
 		talksToForgiveness = 0;
@@ -76,29 +77,37 @@ Murderer::Murderer(string n) {
 }
 Murderer::~Murderer() {}
 
-void Murderer::newChance() { // calculate chance of second kill, should be executed after last talk of the round but before round end
+void Murderer::newChance() // calculate chance of second kill, should be executed after last talk of the round but before round end
+{
 		int chanceToKillTwice = rand() % 100 + 1;
 		int bar;
-		if (lastWrongAccuse) {
+		if (lastWrongAccuse)
+		{
 			bar = 90;
 		}
-		else {
+		else
+		{
 			bar = 45;
 		}
 
-		if (chanceToKillTwice <= bar) {
+		if (chanceToKillTwice <= bar)
+		{
 			numberToKill = 2;
 		}
-		else {
+		else
+		{
 			numberToKill = 1;
 		}
 }
-vector<int> Murderer::doesKill(NPC* n[10], int me) { // input array of characters
+vector<int> Murderer::doesKill(NPC* n[10], int me) // input array of characters
+{
         int killNumber = 0;
         vector<int> kills = {-1, -1};
-		for (int i = 0; i < numberToKill; i++) { // kill number of times determined by numberToKill
+		for (int i = 0; i < numberToKill; i++) // kill number of times determined by numberToKill
+		{
 			int x = rand() % 10;
-			while (x == me || n[x]->getAlive() == false ) { // make sure murderer does not target themselves or a dead person
+			while (x == me || n[x]->getAlive() == false ) // make sure murderer does not target themselves or a dead person
+			{
 				x = rand() % 10;
 			}
 			n[x]->kill();
@@ -108,4 +117,3 @@ vector<int> Murderer::doesKill(NPC* n[10], int me) { // input array of character
 		return kills;
 }
 bool Murderer::getInnocent() { return isInnocent; }
-#endif
