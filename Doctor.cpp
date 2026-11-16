@@ -1,3 +1,13 @@
+/********************************************************
+* Created: 11/2
+* Edit: 11/7 Update information
+* Edit: 11/12 Implement displayAlibi and add nickName
+* Edit: 11/13 Refactor displayAlibi
+* Edit: 11/14 Update room check
+* 
+* Contributers: Payton Phillips and Esra Petty
+********************************************************/
+
 #include "Doctor.h"
 
 Doctor::Doctor()
