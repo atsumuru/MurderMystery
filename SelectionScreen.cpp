@@ -1,3 +1,16 @@
+/********************************************************
+* Created: 11/5
+* Edit: 11/9 Update character options
+* Edit: 11/11 Add switch, dynamically allocate memory, and
+*            selectedCharacter pointer
+* Edit: 11/12 Integrate alibi
+* Edit: 11/13 Improve character selection and add GameManager
+* Edit: 11/14 Implement forgiveness check, fix formating, and
+*            add dead check
+*
+* Contributers: Payton Phillips and Gabrielle de Leeuw
+********************************************************/
+
 // Consulted ChatGPT for alibi integration for selectionScreen
 
 #include "SelectionScreen.h"
