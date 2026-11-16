@@ -1,3 +1,13 @@
+/********************************************************
+* Created: 11/11
+* Edit: 11/11 Implement end of round
+* Edit: 11/14 Add clearScreen function
+* Edit: 11/16 Refactor endOfRound output to nullptr and
+*         time delay
+*
+* Contributers: Gabrielle de Leeuw and Payton Phillips
+********************************************************/
+
 #include <iostream>
 #include <string>
 #include <chrono>
