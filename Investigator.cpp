@@ -1,3 +1,14 @@
+/********************************************************
+* Created: 11/6
+* Edit: 11/9 Update information
+* Edit: 11/12 Implement displayAlibi
+* Edit: 11/13 Refactor displayAlibi
+* Edit: 11/14 Update room check
+* 
+* Contributers: Payton Phillips, Esra Petty, and Gabrielle
+                de Leeuw
+********************************************************/
+
 #include "Investigator.h"
 
 Investigator::Investigator()
