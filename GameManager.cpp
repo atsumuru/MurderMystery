@@ -1,6 +1,3 @@
-#ifndef GAMEMANAGER_CPP
-#define GAMEMANAGER_CPP
-
 #include <iostream>
 #include <fstream>
 
@@ -77,12 +74,14 @@ GameManager::GameManager(int charNum)
 	
 }
 GameManager::~GameManager() {
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 10; i++)
+	{
         delete characters[i];
         characters[i] = nullptr;
 	}
 }
-void GameManager::setCharacterFiles() {
+void GameManager::setCharacterFiles()
+{
     characters[0] = new Baroness();
     characters[1] = new FemmeFatale();
     characters[2] = new Engineer();
@@ -110,25 +109,31 @@ bool GameManager::getCompletedInterrogation()
     return talksLeft <= 0;
 }
 
-void GameManager::checkAlives() {
+void GameManager::checkAlives()
+{
 	int x = 0;
-	for (int i = 0; i < numOfChars; i++) {
-		if (characters[i]->npc->getAlive()) {
+	for (int i = 0; i < numOfChars; i++)
+	{
+		if (characters[i]->npc->getAlive())
+		{
 			x++;
 		}
 	}
 	NPCsLeft = x;
 }
 
-void GameManager::endRound() { 
+void GameManager::endRound()
+{ 
 	roundsDone++;
 	characters[whichIsMurderer]->npc->newChance();
 	NPC* c[10];
 	vector<int> killed;
-	for(int i = 0; i < 10; i++) {
+	for(int i = 0; i < 10; i++)
+	{
 	    c[i] = characters[i]->npc;
 	}
-	if(NPCsLeft > 1) {
+	if(NPCsLeft > 1)
+	{
 	    killed = characters[whichIsMurderer]->npc->doesKill(c, whichIsMurderer);
 	}
 	checkAlives();
@@ -167,13 +172,15 @@ void GameManager::endRound() {
 	startRound();
 }
 
-void GameManager::run() {
+void GameManager::run()
+{
 	// start round screen
 	// select screen
 	startRound();
 	cout << "Starting round " << roundsDone << endl;
 	cout << "Talks left: " << talksLeft << " ";
-	while (talksLeft > 0) {
+	while (talksLeft > 0)
+	{
 		// operate logic, interrogation screen
 		incrementTalks();
 		cout << talksLeft << " ";
@@ -193,7 +200,8 @@ void GameManager::setIsWin(bool value)
     isWin = value;
 }
 
-void GameManager::winScreen() {
+void GameManager::winScreen()
+{
     clearScreen();
 	cout << R"(
                 	    ⠀⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -227,10 +235,12 @@ void GameManager::winScreen() {
 	cout << endl;
 	
 	cout << "HOURS COMPLETED: " << roundsDone << endl;
-	if (NPCsLeft == 10) {
+	if (NPCsLeft == 10)
+	{
 		cout << "You solved the murder without any deaths!" << endl;
 	}
-	else {
+	else
+	{
 		cout << "You solved the murder; however, " << 10 - NPCsLeft << " characters died." << endl;
 	}
 	cout << "The real murderer was " << characters[whichIsMurderer]->getName() << "." << endl;
@@ -240,7 +250,8 @@ void GameManager::winScreen() {
 	exit(1);
 };
  
-void GameManager::loseScreen() {
+void GameManager::loseScreen()
+{
     clearScreen();
 	cout << R"(
                     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀
@@ -283,5 +294,3 @@ void GameManager::loseScreen() {
 };
 
 int GameManager::getWhichIsMurderer() { return whichIsMurderer; };
-
-#endif
