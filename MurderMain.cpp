@@ -1,9 +1,11 @@
-/*  
-\    Esra P.
-\    11/6/26 [Created Main file] 
-\    The "Main" file for our code
-\    
-*/
+/********************************************************
+* Created: 11/6
+* Edit: 11/11 Include GameManager and NPCClass
+* Edit: 11/12 Add comments and fout
+* Edit: 11/13 Modify startScreenMain
+* 
+* Contributers: Esra Petty and Gabrielle de Leeuw
+********************************************************/
 
 
 #include <iostream> 
