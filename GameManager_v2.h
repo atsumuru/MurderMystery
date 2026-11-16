@@ -15,7 +15,8 @@ using namespace std;
 
 class CharacterFile;
 
-class GameManager {
+class GameManager
+{
 protected:
 	int numOfChars;
 	int whichIsMurderer;
