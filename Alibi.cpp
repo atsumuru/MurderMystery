@@ -41,15 +41,18 @@ void assignRoom(CharacterFile* characters[], int count)
     for(int i = 0; i < count; i++)
     {
         int randomRoom = rand() % 6;
-        if(characters[i]->npc->getInnocent() == true) {
+        if(characters[i]->npc->getInnocent() == true)
+        {
+            // find a room with fewer than two characters
             while (roomCount[randomRoom] >= 2)
             {
             randomRoom = rand() % 6;
             }
-        } else {
+        }
+        else
+        {
             randomRoom = 6;
         }
-        // find a room with fewer than two characters
         
         // assigns characters a room
         characters[i]->setRoom(rooms[randomRoom]);
