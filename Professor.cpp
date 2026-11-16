@@ -1,3 +1,14 @@
+/********************************************************
+* Created: 10/31
+* Edit: 11/8 Update information
+* Edit: 11/12 Implement displayAlibi and dialogue
+* Edit: 11/13 Update dialogue and refactor displayAlibi
+* Edit: 11/14 Update room check
+* 
+* Contributers: Payton Phillips Esra Petty, and Gabrielle
+*                de Leeuw
+********************************************************/
+
 #include "Professor.h"
 
 Professor::Professor()
