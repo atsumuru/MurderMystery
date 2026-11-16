@@ -61,7 +61,8 @@ void CharacterFile::displayCatchphrase()
 }
     
 void CharacterFile::displayMotive()
-{
+{ 
+    ofstream fout("NotePad.txt", ios::app);
     // checks if character is dead or alive
     if (npc->getAlive() == false)
     {
@@ -72,11 +73,14 @@ void CharacterFile::displayMotive()
     // randomly pull one of the first two motives (positive or neutral) if innocent, and option 2 or 3 (neutral or negative) if murderer
     if (npc->getInnocent()) {
         int i = rand() % 2;
-        cout << motive[i] << endl;
+        cout << motive[i] << endl; 
+        fout << nickName << ": " << motive[i] << endl;
     } else {
         int i = rand() % 2 + 1;
         cout << motive[i] << endl;
-    }
+        fout << nickName << ": " << motive[i] << endl;
+    } 
+    fout.close();
 } 
 // Added by Esra
 ostream& operator <<(ostream& os, const CharacterFile& cf) {
