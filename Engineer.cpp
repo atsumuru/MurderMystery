@@ -1,3 +1,13 @@
+/********************************************************
+* Created: 10/31
+* Edit: 11/7 Update information
+* Edit: 11/12 Implement displayAlibi and nickName
+* Edit: 11/13 Refactor displayAlibi and update logic
+* Edit: 11/14 Update room check and dialogue
+* 
+* Contributers: Payton Phillips and Esra Petty
+********************************************************/
+
 #include "Engineer.h"
 
 Engineer::Engineer()
