@@ -30,13 +30,13 @@ int main()
 	startScreenMain(gm);
 	// run instructions
 	// run prologue
-// 	while( gm.getIsWin() == false && gm.getNPCsLeft() > 1 ) {
-// 	    gm.run();
-// 	}
-	if( gm.getIsWin() == true ) {
+	if( gm.getIsWin() == true )
+	{
 	    cout << "You win!" << endl;
 	    //run win condition
-	} else {
+	}
+	else
+	{
 	    cout << "You lose." << endl;
 	    // run fail condition
 	} 
