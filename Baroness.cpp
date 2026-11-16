@@ -1,3 +1,14 @@
+/********************************************************
+* Created: 10/31
+* Edit: 11/7 Add baroness stand-in information
+* Edit: 11/12 Add nickName and displayAlibi
+* Edit: 11/13 Refine displayAlibi choices to pull from
+*        CharacterFile and add file logging
+* Edit: 11/14 Fix null check for displayAlibi
+* 
+* Contributers: Payton Phillips and Esra Petty
+********************************************************/
+
 #include "Baroness.h"
 
 Baroness::Baroness()
