@@ -57,7 +57,7 @@ void endOfRoundScreen(int rounds, NPC* char1, NPC*char2) {
     }
 
     cout << endl << endl << endl;
-    sleep_for(seconds(7));
+    //sleep_for(seconds(7));
 }
 
 #endif
