@@ -1,6 +1,11 @@
-// Gabrielle de Leeuw
-// 10/31/26 [moved function defenitions from .h to .cpp]
-// .cpp file for NPC and Murderer classes
+/********************************************************
+* Created: 10/31
+* Edit: 11/11 Refactor NPC and Murderer classes
+* Edit: 11/13 Update deconstructors
+* Edit: 11/14 Implement complete TalksToForgiveness
+* 
+* Contributers: Gabrielle de Leeuw and Payton Phillips
+********************************************************/
 
 #include <iostream>
 #include <string>
