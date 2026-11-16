@@ -1,3 +1,15 @@
+/********************************************************
+* Created: 11/4
+* Edit: 11/6 Add inlines and and refactor for integration
+* Edit: 11/9 Add win/lose screens
+* Edit: 11/13 Add character classes and setCharacterFiles
+* Edit: 11/14 Add getWhichIsMurderer, update win/lose screens,
+*			update round management and death handling
+* Edit: 11/16 Add lose condition
+* 
+* Contributers: Gabrielle de Leeuw and Payton Phillips
+********************************************************/
+
 #include <iostream>
 #include <fstream>
 
