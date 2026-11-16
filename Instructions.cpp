@@ -1,3 +1,12 @@
+/********************************************************
+* Created: 11/10
+* Edit: 11/12 Replace prologueMain with instructionsMain
+* Edit: 11/13 Implement GameManager
+* Edit: 11/14 Add clearScreen function
+* 
+* Contributers: Payton Phillips and Gabrielle de Leeuw
+********************************************************/
+
 #include "Instructions.h"
 #include "StartScreen.h"
 #include "GameManager_v2.h"
