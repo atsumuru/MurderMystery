@@ -1,3 +1,13 @@
+/********************************************************
+* Created: 10/26
+* Edit: 10/27 Update formatting
+* Edit: 11/12 Add nickName and displayAlibi
+* Edit: 11/13 Add GameManager
+* Edit: 11/14 Add input handling
+* 
+* Contributers: Payton Phillips and Gabrielle de Leeuw
+********************************************************/
+
 #include "StartScreen.h"
 #include "Prologue.h"
 #include "Instructions.h"
