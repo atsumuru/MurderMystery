@@ -99,9 +99,6 @@ void selectCharacter(GameManager& gm, int count)
     // nullptr means that it does not point to a character yet
     CharacterFile* selectedCharacter = nullptr;
     
-    cout << "for testing: the murderer is character " << gm.getWhichIsMurderer() + 1 << endl;
-    cout << "for testing: interrogations left til end of round are " << gm.getTalksLeft() << endl;
-    
     cout << "PLEASE SELECT A CHARACTER (ENTER INTEGER): ";
     cin >> choice;
 
