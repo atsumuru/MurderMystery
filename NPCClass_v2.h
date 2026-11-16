@@ -13,7 +13,8 @@
 
 using namespace std;
 
-class NPC {
+class NPC
+{
 protected:
 	bool isAlive;
 	bool isInnocent;
@@ -35,7 +36,8 @@ public:
 	virtual vector<int> doesKill(NPC* c[10], int me); // to make murderer work
 };
 
-class Murderer : public NPC {
+class Murderer : public NPC
+{
 protected:
 	bool killTwice;
 	bool lastWrongAccuse;
