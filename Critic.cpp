@@ -2,7 +2,7 @@
 
 Critic::Critic()
 {
-    name = "                MR. REGINALD SINCLAIR";
+    name = "MR. REGINALD SINCLAIR";
     nickName = "Mr. Sinclair";
 
     ascii = R"(
